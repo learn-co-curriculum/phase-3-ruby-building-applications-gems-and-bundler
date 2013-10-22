@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/michaeldv/awesome_print.git
+  revision: 33026612fcc0914a09ef64ff082da4fece95adf2
+  specs:
+    awesome_print (1.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,6 +46,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print!
   hashie
   octokit (~> 2.0)
   pry

@@ -24,6 +24,11 @@ describe "Bundler" do
       (@gemfile_text =~ /gem .octokit.*.~> 2\.0./).should_not == nil
     end
 
+      # Use the updated Hash syntax { foo: bar }
+    it "should list the awesome_print gem specifying the latest version on github using" do
+      (@gemfile_text =~ /gem .awesome_print., git: .git:\/\/github.com\/michaeldv\/awesome_print\.git./).should_not == nil
+    end
+
     describe "groups" do
       before :each do
         `bundle --without nothing`
