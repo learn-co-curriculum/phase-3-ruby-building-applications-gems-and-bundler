@@ -21,12 +21,13 @@ describe "Bundler" do
 
     # http://robots.thoughtbot.com/post/2508037841/rubys-pessimistic-operator
     it "should list the octokit gem specifying version 2.0 with a twiddle-wakka" do
-      (@gemfile_text =~ /gem .octokit.*.~> 2\.0./).should_not == nil
+      (@gemfile_text =~ /gem .octokit.*.~>.?2\.0./).should_not == nil
     end
 
-      # Use the updated Hash syntax { foo: bar }
+    # http://bundler.io/git.html
+    # Use the updated Hash syntax { foo: bar }
     it "should list the awesome_print gem specifying a remote git repository (use github)" do
-      (@gemfile_text =~ /gem .awesome_print., git: .git:\/\/github.com\/michaeldv\/awesome_print\.git./).should_not == nil
+      (@gemfile_text =~ /gem .awesome_print., git:.*/).should_not == nil
     end
 
     describe "groups" do
@@ -37,7 +38,7 @@ describe "Bundler" do
       # http://bundler.io/v1.3/groups.html
       # Use the updated Hash syntax { foo: bar }
       it "should contain the pry gem in the development group using a hash argument to the gem method" do
-        (@gemfile_text =~ /gem .pry., group: :development'?/).should_not == nil
+        (@gemfile_text =~ /gem .pry., group: .development'?/).should_not == nil
 
         bundle_output = `bundle`
         (bundle_output =~ /pry/).should_not == nil
