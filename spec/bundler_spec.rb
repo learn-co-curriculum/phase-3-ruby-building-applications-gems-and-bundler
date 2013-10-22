@@ -24,7 +24,6 @@ describe "Bundler" do
       (@gemfile_text =~ /gem .octokit.*.~> 2\.0./).should_not == nil
     end
 
-
     describe "groups" do
       before :each do
         `bundle --without nothing`
@@ -56,8 +55,7 @@ describe "Bundler" do
     end
   end
 
-  # manually run bundle install to get this passing
-  # (or bundle for short)
+  # This may exist from having run bundle install in other tests
   describe "bundle install" do
     describe "Gemfile.lock" do
       it "should exist after running `bundle install`" do
