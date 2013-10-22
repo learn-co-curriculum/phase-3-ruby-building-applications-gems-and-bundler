@@ -20,9 +20,10 @@ describe "Bundler" do
     end
 
     # http://robots.thoughtbot.com/post/2508037841/rubys-pessimistic-operator
-    it "list octokit specifying the version 2.0 with a twiddle-wakka" do
+    it "should list the octokit gem specifying version 2.0 with a twiddle-wakka" do
       (@gemfile_text =~ /gem .octokit.*.~> 2\.0./).should_not == nil
     end
+
 
     describe "groups" do
       before :each do
@@ -70,10 +71,12 @@ describe "Bundler" do
       @environment_text = File.read('config/environment.rb')
     end
 
+    # http://bundler.io/
     it "should require bundler/setup in the environment" do
       (@environment_text =~ /require .bundler\/setup./).should_not == nil
     end
 
+    # http://bundler.io/v1.3/groups.html
     it "should require the default and development groups" do
       (@environment_text =~ /Bundler\.require\(:default, :development\)/).should_not == nil
     end
