@@ -25,7 +25,7 @@ describe "Bundler" do
     end
 
       # Use the updated Hash syntax { foo: bar }
-    it "should list the awesome_print gem specifying the latest version on github using" do
+    it "should list the awesome_print gem specifying a remote git repository (use github)" do
       (@gemfile_text =~ /gem .awesome_print., git: .git:\/\/github.com\/michaeldv\/awesome_print\.git./).should_not == nil
     end
 
