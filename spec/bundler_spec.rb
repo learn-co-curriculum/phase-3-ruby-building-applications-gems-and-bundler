@@ -11,7 +11,7 @@ describe "Bundler" do
 
     # http://bundler.io/v1.3/gemfile.html
     it "should list the hashie gem without specifying a version" do
-      (@gemfile_text =~ /gem .hashie./).should_not == nil
+      (@gemfile_text =~ /gem .hashie.$/).should_not == nil
     end
 
     # http://bundler.io/v1.3/gemfile.html
