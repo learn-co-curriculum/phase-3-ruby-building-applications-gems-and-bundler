@@ -81,11 +81,11 @@ describe "Bundler" do
     end
 
     # http://bundler.io/v1.3/groups.html
-    it "should require the default and development groups" do
+    it "should require the default and development groups in the environment" do
       (@environment_text =~ /Bundler\.require\(:default, :development\)/).should_not == nil
     end
 
-    it "should successfully make the bundler gems available in bin/run.rb" do
+    it "should make the bundler gems available in bin/run.rb" do
       expect { require_relative "../bin/run.rb" }.not_to raise_error
     end
   end
