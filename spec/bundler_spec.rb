@@ -30,7 +30,7 @@ describe "Bundler" do
     end
 
     describe "groups" do
-      before :each do
+      after :each do
         `bundle --without nothing`
       end
 
