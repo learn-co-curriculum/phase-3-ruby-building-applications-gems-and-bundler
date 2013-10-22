@@ -64,4 +64,22 @@ describe "Bundler" do
       end
     end
   end
+
+  describe "integration" do
+    before :each do
+      @environment_text = File.read('config/environment.rb')
+    end
+
+    it "should require bundler/setup in the environment" do
+      (@environment_text =~ /require .bundler\/setup./).should_not == nil
+    end
+
+    it "should require the default and development groups" do
+      (@environment_text =~ /Bundler\.require\(:default, :development\)/).should_not == nil
+    end
+
+    it "should successfully make the bundler gems available in bin/run.rb" do
+      expect { require_relative "../bin/run.rb" }.not_to raise_error
+    end
+  end
 end
