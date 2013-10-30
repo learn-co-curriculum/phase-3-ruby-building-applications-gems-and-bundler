@@ -1,3 +1,5 @@
+require 'bundler'
+
 describe "Bundler" do
   describe "Gemfile" do
     before :all do
@@ -32,7 +34,9 @@ describe "Bundler" do
 
     describe "groups" do
       after :each do
-        `bundle --without nothing`
+        Bundler.with_clean_env do
+          `bundle --without nothing`
+        end
       end
 
       # http://bundler.io/v1.3/groups.html
@@ -40,10 +44,14 @@ describe "Bundler" do
       it "should contain the pry gem in the development group using a hash argument to the gem method" do
         (@gemfile_text =~ /gem .pry., group: .development'?/).should_not == nil
 
-        bundle_output = `bundle`
+        Bundler.with_clean_env do
+          bundle_output = `bundle`
+        end
         (bundle_output =~ /pry/).should_not == nil
 
-        bundle_output = `bundle --without development`
+        Bundler.with_clean_env do
+          bundle_output = `bundle --without development`
+        end
         (bundle_output =~ /pry/).should == nil
       end
 
@@ -52,10 +60,14 @@ describe "Bundler" do
       it "should contain the rspec gem in the test group using block syntax" do
         (@gemfile_text =~ /group .?test.* do/).should_not == nil
 
-        bundle_output = `bundle`
+        Bundler.with_clean_env do
+          bundle_output = `bundle`
+        end
         (bundle_output =~ /rspec/).should_not == nil
 
-        bundle_output = `bundle --without test`
+        Bundler.with_clean_env do
+          bundle_output = `bundle --without test`
+        end
         (bundle_output =~ /rspec/).should == nil
       end
     end
