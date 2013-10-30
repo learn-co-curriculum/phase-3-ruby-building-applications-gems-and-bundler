@@ -44,6 +44,7 @@ describe "Bundler" do
       it "should contain the pry gem in the development group using a hash argument to the gem method" do
         (@gemfile_text =~ /gem .pry., group: .development'?/).should_not == nil
 
+        bundle_output = ""
         Bundler.with_clean_env do
           bundle_output = `bundle`
         end
@@ -60,6 +61,7 @@ describe "Bundler" do
       it "should contain the rspec gem in the test group using block syntax" do
         (@gemfile_text =~ /group .?test.* do/).should_not == nil
 
+        bundle_output = ""
         Bundler.with_clean_env do
           bundle_output = `bundle`
         end
