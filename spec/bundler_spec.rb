@@ -29,7 +29,7 @@ describe "Bundler" do
     # http://bundler.io/git.html
     # Use the updated Hash syntax { foo: bar }
     it "should list the awesome_print gem specifying a remote git repository (use github)" do
-      (@gemfile_text =~ /gem .awesome_print., git:.*/).should_not == nil
+      (@gemfile_text =~ /gem .awesome_print.,.*git.*/).should_not == nil
     end
 
     describe "groups" do
@@ -42,7 +42,7 @@ describe "Bundler" do
       # http://bundler.io/v1.3/groups.html
       # Use the updated Hash syntax { foo: bar }
       it "should contain the pry gem in the development group using a hash argument to the gem method" do
-        (@gemfile_text =~ /gem .pry., group: .development'?/).should_not == nil
+        (@gemfile_text =~ /gem .pry.,.*group.*development'?/).should_not == nil
 
         bundle_output = ""
         Bundler.with_clean_env do
@@ -59,7 +59,7 @@ describe "Bundler" do
       # http://bundler.io/v1.3/groups.html
       # Use the updated Hash syntax { foo: bar }
       it "should contain the rspec gem in the test group using block syntax" do
-        (@gemfile_text =~ /group .?test.* do/).should_not == nil
+        (@gemfile_text =~ /group .*test.* do/).should_not == nil
 
         bundle_output = ""
         Bundler.with_clean_env do
