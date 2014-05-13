@@ -1,6 +1,6 @@
 ---
-tags: bundler
-languages: ruby
+  tags: bundler
+  languages: ruby
   resources: 2
 ---
 
