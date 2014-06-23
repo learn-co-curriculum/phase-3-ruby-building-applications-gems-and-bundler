@@ -1,5 +1,5 @@
 ---
-  tags: bundler
+  tags: bundler, introduction
   languages: ruby
   resources: 2
 ---
