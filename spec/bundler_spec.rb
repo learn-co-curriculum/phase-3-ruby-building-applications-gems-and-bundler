@@ -8,28 +8,28 @@ describe "Bundler" do
 
     # http://bundler.io/v1.3/gemfile.html
     it "should specify rubygems as a source using the SSL protocol" do
-      (@gemfile_text =~ /source .https:\/\/rubygems.org./).should_not == nil
+      expect(@gemfile_text =~ /source .https:\/\/rubygems.org./).not_to eq(nil)
     end
 
     # http://bundler.io/v1.3/gemfile.html
     it "should list the hashie gem without specifying a version" do
-      (@gemfile_text =~ /gem .hashie.$/).should_not == nil
+      expect(@gemfile_text =~ /gem .hashie.$/).not_to eq(nil)
     end
 
     # http://bundler.io/v1.3/gemfile.html
     it "should list the sinatra gem with the specific version 1.4.4" do
-      (@gemfile_text =~ /gem .sinatra., .v?1\.4\.4./).should_not == nil
+      expect(@gemfile_text =~ /gem .sinatra., .v?1\.4\.4./).not_to eq(nil)
     end
 
     # http://robots.thoughtbot.com/post/2508037841/rubys-pessimistic-operator
     it "should list the octokit gem specifying version 2.0 with a twiddle-wakka" do
-      (@gemfile_text =~ /gem .octokit.*.~>.?2\.0./).should_not == nil
+      expect(@gemfile_text =~ /gem .octokit.*.~>.?2\.0./).not_to eq(nil)
     end
 
     # http://bundler.io/git.html
     # Use the updated Hash syntax { foo: bar }
     it "should list the awesome_print gem specifying a remote git repository (use github)" do
-      (@gemfile_text =~ /gem .awesome_print.,.*git.*/).should_not == nil
+      expect(@gemfile_text =~ /gem .awesome_print.,.*git.*/).not_to eq(nil)
     end
 
     describe "groups" do
@@ -42,35 +42,35 @@ describe "Bundler" do
       # http://bundler.io/v1.3/groups.html
       # Use the updated Hash syntax { foo: bar }
       it "should contain the pry gem in the development group using a hash argument to the gem method" do
-        (@gemfile_text =~ /gem .pry.,.*group.*development'?/).should_not == nil
+        expect(@gemfile_text =~ /gem .pry.,.*group.*development'?/).not_to eq(nil)
 
         bundle_output = ""
         Bundler.with_clean_env do
           bundle_output = `bundle`
         end
-        (bundle_output =~ /pry/).should_not == nil
+        expect(bundle_output =~ /pry/).not_to eq(nil)
 
         Bundler.with_clean_env do
           bundle_output = `bundle --without development`
         end
-        (bundle_output =~ /pry/).should == nil
+        expect(bundle_output =~ /pry/).to eq(nil)
       end
 
       # http://bundler.io/v1.3/groups.html
       # Use the updated Hash syntax { foo: bar }
       it "should contain the rspec gem in the test group using block syntax" do
-        (@gemfile_text =~ /group .*test.* do/).should_not == nil
+        expect(@gemfile_text =~ /group .*test.* do/).not_to eq(nil)
 
         bundle_output = ""
         Bundler.with_clean_env do
           bundle_output = `bundle`
         end
-        (bundle_output =~ /rspec/).should_not == nil
+        expect(bundle_output =~ /rspec/).not_to eq(nil)
 
         Bundler.with_clean_env do
           bundle_output = `bundle --without test`
         end
-        (bundle_output =~ /rspec/).should == nil
+        expect(bundle_output =~ /rspec/).to eq(nil)
       end
     end
   end
@@ -79,7 +79,7 @@ describe "Bundler" do
   describe "bundle install" do
     describe "Gemfile.lock" do
       it "should exist after running `bundle install`" do
-        File.exists?('Gemfile.lock').should == true
+        expect(File.exists?('Gemfile.lock')).to eq(true)
       end
     end
   end
@@ -91,12 +91,12 @@ describe "Bundler" do
 
     # http://bundler.io/
     it "should require bundler/setup in the environment" do
-      (@environment_text =~ /require .bundler\/setup./).should_not == nil
+      expect(@environment_text =~ /require .bundler\/setup./).not_to eq(nil)
     end
 
     # http://bundler.io/v1.3/groups.html
     it "should require the default and development groups in the environment" do
-      (@environment_text =~ /Bundler\.require\(:default, :development\)/).should_not == nil
+      expect(@environment_text =~ /Bundler\.require\(:default, :development\)/).not_to eq(nil)
     end
 
     it "should make the bundler gems available in bin/run.rb" do
