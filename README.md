@@ -8,7 +8,7 @@
 
 ## Deliverables
 
-Fork this repository. Deliver your solution in the master branch.
+Fork this repository. Get the tests to pass, submit a pull request. You know the drill. :)
 
 ## Instructions
 
