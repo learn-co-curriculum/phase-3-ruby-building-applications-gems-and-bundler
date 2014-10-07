@@ -18,7 +18,7 @@ One way to handle this, is to have a note in your README, with something like, "
 ### When disaster strikes
 
 >A patch got applied
- 
+
 >Oh my god, it broke it all
 
 >Taste unemployment
@@ -34,7 +34,7 @@ No! We're programmers damn it!
 
 Bundler handles all of this for you. It provides you with a `Gemfile` where you can keep your requirements in one place. The creates a single place for truth in your app.
 
-- Need the Sinatra gem for your project? Add `gem 'sinatra'` your Gemfile. 
+- Need the Sinatra gem for your project? Add `gem 'sinatra'` your Gemfile.
 - Need the Sinatra gem, but at version 1.4.5? Add `gem 'sinatra', '1.4.5'` to your Gemfile.
 - Need the Sinatra gem at a version higher than 1.4, but less than 1.5? Add `gem 'sinatra', '~> 1.4.0'`
 
@@ -46,10 +46,56 @@ With this, you can make sure everyone working on your app is using the right ver
 # Using Bundler
 Getting started with Bundler is super easy. To create a Gemfile, type `bundle init` in your terminal. You'll notice we created one for you in the repo so running `bundle init` will give you an error.
 
+## Anatomy of Bundler files
+There's only one file Bundler requires you have, the others are practices we'll use, but could be anything.
+
+- Gemfile - This file is required by Bundler and contains a source, and a list of file requirements. That's all.
+- config/environment.rb - This file can be named anything, the environment file is where we'll be loading all of our app's dependencies, from gems to database connections.
+
+- bin/run.rb - This file can be named anything. This file will start our application. This file will require the environment file we created earlier to provide our app with access to our gems.
+
+We'll be using these files in the test suite, so don't rename them.
+
+### Gemfile
+
+The Gemfile is a list of gems your app uses. The Gemfile lets you setup groups, so gems are only loaded in specific instances.
+
+Here's an example Gemfile. This specifies we're ok with the latest version of `sinatra` and only want `pry` in our development environment.
+
+``` ruby
+source "https://rubygems.org"
+
+gem "sinatra"
+
+group :development do
+  gem "pry"
+end
+```
+
 After getting all of your gems in your Gemfile, run `bundle install` from your terminal. This will install the listed gems for you. They won't show up in the directory, but they are in your system, and available.
 
 Running `bundle install` also creates a new file: `Gemfile.lock`. This file notes which specific version of the gem was installed.
 
+
+### config/environment.rb
+This file is used to set up our environment. Here we specify which Bundler groups we want to load. The following code is used to load the `default` group (Anything not explicitly in a group), and the `development` group.
+
+
+``` ruby
+require 'bundler/setup'
+Bundler.require(:development, :default)
+```
+
+### bin/run.rb
+This is where the action is. This is where our app logic goes, and where we make our millions.
+
+To take advantage of all of the work we did in the environment file, let's require it here.
+
+``` ruby
+require_relative '../config/environment'
+```
+
+That's it! Now we can access all of our gems from our `run.rb` file.
 
 # Working on the lab
 
