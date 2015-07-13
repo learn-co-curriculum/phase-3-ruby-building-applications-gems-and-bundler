@@ -1,9 +1,3 @@
----
-  tags: bundler, introduction
-  languages: ruby
-  resources: 2
----
-
 # Using Bundler
 
 # What is Bundler?
