@@ -77,7 +77,7 @@ This file is used to set up our environment. Here we specify which Bundler group
 
 ``` ruby
 require 'bundler/setup'
-Bundler.require(:development, :default)
+Bundler.require(:default, :development)
 ```
 
 ### bin/run.rb
