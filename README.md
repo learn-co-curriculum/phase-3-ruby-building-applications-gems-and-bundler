@@ -18,7 +18,7 @@ One way to handle this, is to have a note in your README, with something like, "
 >Taste unemployment
 > ### - Steven Nunez
 
-Software is complex. One change to a dependency can completely break your app. We can remedy this by enforcing that we use a specific version of the gem. But this too has it's problems. How do you enforce this? Are you going to trust that everyone has the right version?
+Software is complex. One change to a dependency can completely break your app. We can remedy this by enforcing that we use a specific version of the gem. But this, too, has its problems. How do you enforce this? Are you going to trust that everyone has the right version?
 
 No! We're programmers damn it!
 
@@ -26,9 +26,9 @@ No! We're programmers damn it!
 
 ## Enter bundler
 
-Bundler handles all of this for you. It provides you with a `Gemfile` where you can keep your requirements in one place. The creates a single place for truth in your app.
+Bundler handles all of this for you. It provides you with a `Gemfile` where you can keep your requirements in one place. The `Gemfile` creates a single place for truth in your app.
 
-- Need the Sinatra gem for your project? Add `gem 'sinatra'` your Gemfile.
+- Need the Sinatra gem for your project? Add `gem 'sinatra'`to  your Gemfile.
 - Need the Sinatra gem, but at version 1.4.5? Add `gem 'sinatra', '1.4.5'` to your Gemfile.
 - Need the Sinatra gem at a version higher than 1.4, but less than 1.5? Add `gem 'sinatra', '~> 1.4.0'`
 
