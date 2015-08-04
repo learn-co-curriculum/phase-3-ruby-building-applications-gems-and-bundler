@@ -34,9 +34,7 @@ describe "Bundler" do
 
     describe "groups" do
       after :each do
-        Bundler.with_clean_env do
-          `bundle --without nothing`
-        end
+        system("rm .bundle/config")
       end
 
       # http://bundler.io/v1.3/groups.html

@@ -5,7 +5,7 @@
 Bundler is a way to handle code dependencies. To see why that's a big deal, let's try to understand the problem a bit.
 
 ### The problem
-Imagine you're writing an amazing app. This app, being built on the shoulders of giants, requires OTHER code to work. If it's a web app, maybe you'll be using the incredible (Sinatra)[http://www.sinatrarb.com/] gem. Need a database? Try the (Sequel)[https://github.com/jeremyevans/sequel] gem.
+Imagine you're writing an amazing app. This app, being built on the shoulders of giants, requires OTHER code to work. If it's a web app, maybe you'll be using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database? Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
 
 One way to handle this, is to have a note in your README, with something like, "Hey, install Sinatra and Sequel".
 
