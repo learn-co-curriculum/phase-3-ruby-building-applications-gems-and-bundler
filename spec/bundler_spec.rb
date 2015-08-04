@@ -52,11 +52,11 @@ describe "Bundler" do
         expect(@gemfile_text =~ /gem .pry.,.*group.*development'?/).not_to eq(nil)
         expect(@bundle_output =~ /pry/).not_to eq(nil)
 
-        bundle_output = ""
+        bundle_output_without_development = ""
         Bundler.with_clean_env do
-          bundle_output = `bundle --without development`
+          bundle_output_without_development = `bundle --without development`
         end
-        expect(bundle_output =~ /pry/).to eq(nil)
+        expect(bundle_output_without_development =~ /pry/).to eq(nil)
       end
 
       # http://bundler.io/v1.3/groups.html
@@ -64,11 +64,11 @@ describe "Bundler" do
         expect(@gemfile_text =~ /group .*test.* do/).not_to eq(nil)
         expect(@bundle_output =~ /rspec/).not_to eq(nil)
 
-        bundle_output = ""
+        bundle_output_without_test = ""
         Bundler.with_clean_env do
-          bundle_output = `bundle --without test`
+          bundle_output_without_test = `bundle --without test`
         end
-        expect(bundle_output =~ /rspec/).to eq(nil)
+        expect(bundle_output_without_test =~ /rspec/).to eq(nil)
       end
     end
   end
