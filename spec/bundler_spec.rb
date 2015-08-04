@@ -35,7 +35,6 @@ describe "Bundler" do
     end
 
     # http://bundler.io/git.html
-    # Use the updated Hash syntax { foo: bar }
     it "should list the awesome_print gem specifying a remote git repository (use github)" do
       expect(@gemfile_text =~ /gem .awesome_print.,.*git.*/).not_to eq(nil)
     end
@@ -46,7 +45,6 @@ describe "Bundler" do
       end
 
       # http://bundler.io/v1.3/groups.html
-      # Use the updated Hash syntax { foo: bar }
       it "should contain the pry gem in the development group using a hash argument to the gem method" do
         expect(@gemfile_text =~ /gem .pry.,.*group.*development'?/).not_to eq(nil)
         expect(@bundle_output =~ /pry/).not_to eq(nil)
@@ -59,10 +57,9 @@ describe "Bundler" do
       end
 
       # http://bundler.io/v1.3/groups.html
-      # Use the updated Hash syntax { foo: bar }
       it "should contain the rspec gem in the test group using block syntax" do
         expect(@gemfile_text =~ /group .*test.* do/).not_to eq(nil)
-        expect(bundle_output =~ /rspec/).not_to eq(nil)
+        expect(@bundle_output =~ /rspec/).not_to eq(nil)
 
         bundle_output = ""
         Bundler.with_clean_env do
