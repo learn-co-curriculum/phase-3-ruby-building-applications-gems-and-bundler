@@ -1,13 +1,24 @@
 require 'bundler'
 
 describe "Bundler" do
+  before :all do
+    @bundle_output = ""
+    Bundler.with_clean_env do
+      @bundle_output = `bundle`
+    end
+  end
+
   describe "Gemfile" do
     before :all do
       @gemfile_text = File.read('Gemfile')
     end
 
+    it "has correct syntax" do
+      expect(@bundle_output).not_to include("There was an error parsing")
+    end
+
     # http://bundler.io/v1.3/gemfile.html
-    it "should specify rubygems as a source using the SSL protocol" do
+    it "should specify rubygems as a source using the SSL protocol on the first line" do
       expect(@gemfile_text =~ /source .https:\/\/rubygems.org./).not_to eq(nil)
     end
 
@@ -27,7 +38,6 @@ describe "Bundler" do
     end
 
     # http://bundler.io/git.html
-    # Use the updated Hash syntax { foo: bar }
     it "should list the awesome_print gem specifying a remote git repository (use github)" do
       expect(@gemfile_text =~ /gem .awesome_print.,.*git.*/).not_to eq(nil)
     end
@@ -38,37 +48,27 @@ describe "Bundler" do
       end
 
       # http://bundler.io/v1.3/groups.html
-      # Use the updated Hash syntax { foo: bar }
       it "should contain the pry gem in the development group using a hash argument to the gem method" do
         expect(@gemfile_text =~ /gem .pry.,.*group.*development'?/).not_to eq(nil)
+        expect(@bundle_output =~ /pry/).not_to eq(nil)
 
-        bundle_output = ""
+        bundle_output_without_development = ""
         Bundler.with_clean_env do
-          bundle_output = `bundle`
+          bundle_output_without_development = `bundle --without development`
         end
-        expect(bundle_output =~ /pry/).not_to eq(nil)
-
-        Bundler.with_clean_env do
-          bundle_output = `bundle --without development`
-        end
-        expect(bundle_output =~ /pry/).to eq(nil)
+        expect(bundle_output_without_development =~ /pry/).to eq(nil)
       end
 
       # http://bundler.io/v1.3/groups.html
-      # Use the updated Hash syntax { foo: bar }
       it "should contain the rspec gem in the test group using block syntax" do
         expect(@gemfile_text =~ /group .*test.* do/).not_to eq(nil)
+        expect(@bundle_output =~ /rspec/).not_to eq(nil)
 
-        bundle_output = ""
+        bundle_output_without_test = ""
         Bundler.with_clean_env do
-          bundle_output = `bundle`
+          bundle_output_without_test = `bundle --without test`
         end
-        expect(bundle_output =~ /rspec/).not_to eq(nil)
-
-        Bundler.with_clean_env do
-          bundle_output = `bundle --without test`
-        end
-        expect(bundle_output =~ /rspec/).to eq(nil)
+        expect(bundle_output_without_test =~ /rspec/).to eq(nil)
       end
     end
   end
