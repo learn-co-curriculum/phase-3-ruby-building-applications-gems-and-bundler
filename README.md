@@ -89,6 +89,8 @@ require 'bundler/setup'
 Bundler.require(:default, :development)
 ```
 
+**Important:** The two arguments that you are passing into the `.require` method *must be passed in in the correct order, shown above*. The test you are trying to pass is testing for order. 
+
 ### bin/run.rb
 
 This is where the action is. This is where our app logic goes, and where we make our millions.
