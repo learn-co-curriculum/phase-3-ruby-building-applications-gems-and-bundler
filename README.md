@@ -2,7 +2,7 @@
 
 ## Objectives
 
-1. Learn about requiring external code libraries, called gems, in your Ruby applicatoins. 
+1. Learn about requiring external code libraries, called gems, in your Ruby applications. 
 2. Learn how to use Bunlder and a Gemfile to manage gems and their dependencies in your applications. 
 
 ## What is Bundler?
@@ -88,6 +88,8 @@ This file is used to set up our environment. Here we specify which Bundler group
 require 'bundler/setup'
 Bundler.require(:default, :development)
 ```
+
+**Important:** The two arguments that you are passing into the `.require` method *must be passed in in the correct order, shown above*. The test you are trying to pass is testing for order. 
 
 ### bin/run.rb
 
