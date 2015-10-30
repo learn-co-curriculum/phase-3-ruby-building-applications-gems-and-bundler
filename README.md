@@ -11,7 +11,7 @@
 
 RubyGems is a package manager for the Ruby programming language that provides a standard format for distributing Ruby programs and libraries (in a self-contained format called a "gem"), a tool designed to easily manage the installation of gems, and a server for distributing them.
 
-### How to find a gems?
+### How to find a gem?
 
 One option is always to google. Lets assume we are looking for a gem to send emails. We could google `ruby gem to send emails`. One of the first result is a link to `https://www.ruby-toolbox.com/categories/e_mail`.
 
