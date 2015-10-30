@@ -5,6 +5,13 @@
 1. Learn about requiring external code libraries, called gems, in your Ruby applications. 
 2. Learn how to use Bundler and a Gemfile to manage gems and their dependencies in your applications. 
 
+
+
+## What are RubyGems?
+
+RubyGems is a package manager for the Ruby programming language that provides a standard format for distributing Ruby programs and libraries (in a self-contained format called a "gem"), a tool designed to easily manage the installation of gems, and a server for distributing them.
+
+
 ## What is Bundler?
 
 Bundler is a way to handle code dependencies. To see why that's a big deal, let's try to understand the problem a bit.
