@@ -7,45 +7,60 @@
 
 
 
-## What are RubyGems?
+### What are RubyGems?
 
 RubyGems is a package manager for the Ruby programming language that provides a standard format for distributing Ruby programs and libraries (in a self-contained format called a "gem"), a tool designed to easily manage the installation of gems, and a server for distributing them.
 
-### How to find a gem?
+#### How to find a gem?
 
 One option is always to google. Lets assume we are looking for a gem to send emails. We could google `ruby gem to send emails`. One of the first result is a link to `https://www.ruby-toolbox.com/categories/e_mail`.
 
 Another option is to go to `https://rubygems.org/` and enter `mail` in the search bar.
 
-### How to choose the right gem?
+#### How to choose the right gem?
 
-### How to install a gem?
+Lets assume we googled and now we are on the `ruby-toolbox.com` website, which shows a list of all the gems that help with sending mails. Which one is the best? How to choose from those many options?
+
+At the top of the page you will the the most popular gem listed - `ActionMailer`, `Mail` and `Pony `are the top 3.
+
+Which one should I use for my application? 
+
+First of all you, if you have a rails application you should use gems build for rails, like the `actionmailer` gem. How do we know it is a rails application? If you look at the Github link, you'll notice this gems lives under `rails/rails` repository.
+
+We don't have a rails application, so we need to decide between the `mail` and `pony` gem. The easiest way is to this by inspecting the total fork count, or by going to the Github repository. Some questions that will help with making your decision: 
+
+* How many people forked the repo? 
+* How many are contributed to the repo?
+* How many open issues does the repo have? 
+* Does the repo have a test suite?
+
+#### How to install a gem?
 
 
 
-## What is Bundler?
+### What is Bundler?
 
 Bundler is a way to handle code dependencies. To see why that's a big deal, let's try to understand the problem a bit.
 
-## The problem
+### The problem
 Imagine you're writing an amazing app. This app, being built on the shoulders of giants, requires OTHER code to work. If it's a web app, maybe you'll be using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database? Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
 
 One way to handle this, is to have a note in your README, with something like, "Hey, install Sinatra and Sequel".
 
-### When disaster strikes
+#### When disaster strikes
 
 >A patch got applied
 
 >Oh my god, it broke it all
 
 >Taste unemployment
-> ### - Steven Nunez
+> #### - Steven Nunez
 
 Software is complex. One change to a dependency can completely break your app. We can remedy this by enforcing that we use a specific version of the gem. But this, too, has its problems. How do you enforce this? Are you going to trust that everyone has the right version?
 
 No! We're programmers damn it!
 
-## Enter bundler
+### Enter bundler
 
 Bundler handles all of this for you. It provides you with a `Gemfile` where you can keep your requirements in one place. The `Gemfile` creates a single place for for gems to be required and versions to be specified.
 
