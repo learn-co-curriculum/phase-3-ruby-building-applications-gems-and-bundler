@@ -46,6 +46,22 @@ We are going to use the `mail` gem. One way of installing it would be to run `ge
 
 Assuming you have a application the other way would be to add `gem 'mail', '~> 2.6', '>= 2.6.3'` (which is the current version of the gem) to your `GEMFILE`. This makes sure who ever uses your application would also use the same version of the gem.
 
+### Gemfile
+
+The Gemfile is a list of gems your app uses. The Gemfile lets you setup groups, so gems are only loaded in specific instances. For example, you might a have gem like Pry in your `development` group because you only need to use Pry to debug when you are in the development phase. Your code in production, i.e. when your app is being used by a user, doesn't need to use the Pry gem. 
+
+Here's an example Gemfile. 
+
+``` ruby
+source "https://rubygems.org"
+
+gem "sinatra"
+
+group :development do
+  gem "pry"
+end
+```
+
 ### What is Bundler?
 
 Bundler is a way to handle code dependencies. To see why that's a big deal, let's try to understand the problem a bit.
@@ -98,9 +114,7 @@ We'll be using these files in the test suite, so don't rename them.
 
 ### Gemfile
 
-The Gemfile is a list of gems your app uses. The Gemfile lets you setup groups, so gems are only loaded in specific instances. For example, you might a have gem like Pry in your `development` group because you only need to use Pry to debug when you are in the development phase. Your code in production, i.e. when your app is being used by a user, doesn't need to use the Pry gem. 
-
-Here's an example Gemfile. This specifies that we're ok with the latest version of `sinatra` and only want `pry` in our development environment.
+Add this to your `Gemfile`
 
 ``` ruby
 source "https://rubygems.org"
