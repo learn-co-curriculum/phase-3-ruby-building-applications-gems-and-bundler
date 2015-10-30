@@ -52,7 +52,7 @@ The Gemfile is a list of gems your app uses. The Gemfile lets you setup groups, 
 
 Here's an example Gemfile. 
 
-``` ruby
+```ruby
 source "https://rubygems.org"
 
 gem "sinatra"
@@ -116,7 +116,7 @@ We'll be using these files in the test suite, so don't rename them.
 
 Add this code to your `Gemfile`
 
-``` ruby
+```ruby
 source "https://rubygems.org"
 
 gem "sinatra"
@@ -139,7 +139,7 @@ This file is used to set up our environment. Here we specify which Bundler group
 
 **Place the following code in `config/environment.rb`:** 
 
-``` ruby
+```ruby
 require 'bundler/setup'
 Bundler.require(:default, :development)
 ```
@@ -154,7 +154,7 @@ To take advantage of all of the work we did in the environment file, let's requi
 
 **Place the following code in `bin/run.rb`:**
 
-``` ruby
+```ruby
 require_relative '../config/environment'
 ```
 
