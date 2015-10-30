@@ -114,7 +114,7 @@ We'll be using these files in the test suite, so don't rename them.
 
 ### Gemfile
 
-Add this to your `Gemfile`
+Add this code to your `Gemfile`
 
 ``` ruby
 source "https://rubygems.org"
