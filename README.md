@@ -42,14 +42,16 @@ We don't have a rails application, so we need to decide between the `mail` and `
 
 #### How to install a gem?
 
+We are going to use the `mail` gem. One way of installing it would be to run `gem install mail` in your terminal.
 
+Assuming you have a application the other way would be to add `gem 'mail', '~> 2.6', '>= 2.6.3'` (which is the current version of the gem) to your `GEMFILE`. This makes sure who ever uses your application would also use the same version of the gem.
 
 ### What is Bundler?
 
 Bundler is a way to handle code dependencies. To see why that's a big deal, let's try to understand the problem a bit.
 
 ### The problem
-Imagine you're writing an amazing app. This app, being built on the shoulders of giants, requires OTHER code to work. If it's a web app, maybe you'll be using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database? Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
+Imagine you're writing an amazing app. This app, being built on the shoulders of giants(gems), requires OTHER code to work. If it's a web app, maybe you'll be using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database? Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
 
 One way to handle this, is to have a note in your README, with something like, "Hey, install Sinatra and Sequel".
 
@@ -78,7 +80,7 @@ Bundler handles all of this for you. It provides you with a `Gemfile` where you 
 
 With this, you can make sure everyone working on your app is using the right version. Now to get the code working :-)
 
-## Instructions
+## Code along
 
 ### Using Bundler
 
