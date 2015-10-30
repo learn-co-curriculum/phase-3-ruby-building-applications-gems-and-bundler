@@ -3,7 +3,7 @@
 ## Objectives
 
 1. Learn about requiring external code libraries, called gems, in your Ruby applications. 
-2. Learn how to use Bunlder and a Gemfile to manage gems and their dependencies in your applications. 
+2. Learn how to use Bundler and a Gemfile to manage gems and their dependencies in your applications. 
 
 ## What is Bundler?
 
