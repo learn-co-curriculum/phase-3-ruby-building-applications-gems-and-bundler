@@ -23,9 +23,15 @@ Lets assume we googled and now we are on the `ruby-toolbox.com` website, which s
 
 At the top of the page you will the the most popular gem listed - `ActionMailer`, `Mail` and `Pony `are the top 3.
 
+![](http://readme-pics.s3.amazonaws.com/the-ruby-toolbox-most-popular.png)
+
 Which one should I use for my application? 
 
 First of all you, if you have a rails application you should use gems build for rails, like the `actionmailer` gem. How do we know it is a rails application? If you look at the Github link, you'll notice this gems lives under `rails/rails` repository.
+
+![](http://readme-pics.s3.amazonaws.com/actionmailer.png)
+
+![](http://readme-pics.s3.amazonaws.com/mail.png)
 
 We don't have a rails application, so we need to decide between the `mail` and `pony` gem. The easiest way is to this by inspecting the total fork count, or by going to the Github repository. Some questions that will help with making your decision: 
 
