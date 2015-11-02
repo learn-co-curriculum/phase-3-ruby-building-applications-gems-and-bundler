@@ -42,7 +42,13 @@ We don't have a rails application, so we need to decide between the `mail` and `
 
 #### How to install a gem?
 
-We are going to use the `mail` gem. One way of installing it would be to run `gem install mail` in your terminal.
+We are going to use the `mail` gem. One way of installing it would be to run `gem install mail` in your terminal and then `require` the gem in your file that uses that gem. 
+
+For example:
+
+```ruby
+require 'mail'
+```
 
 Assuming you have a application the other way would be to add `gem 'mail', '~> 2.6', '>= 2.6.3'` (which is the current version of the gem) to your `GEMFILE`. This makes sure who ever uses your application would also use the same version of the gem.
 
