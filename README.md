@@ -33,7 +33,7 @@ First of all you, if you have a rails application you should use gems build for 
 
 ![](http://readme-pics.s3.amazonaws.com/mail.png)
 
-We don't have a rails application, so we need to decide between the `mail` and `pony` gem. The easiest way is to this by inspecting the total fork count, or by going to the Github repository. Some questions that will help with making your decision: 
+We don't have a rails application, so we need to decide between the `mail` and `pony` gem. The easiest way to do this is by inspecting the total fork count, or by going to the Github repository. Some questions that will help with making your decision: 
 
 * How many people forked the repo? 
 * How many are contributed to the repo?
