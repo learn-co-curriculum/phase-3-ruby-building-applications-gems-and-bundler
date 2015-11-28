@@ -27,7 +27,7 @@ At the top of the page you will the the most popular gem listed - `ActionMailer`
 
 Which one should I use for my application? 
 
-First of all you, if you have a rails application you should use gems build for rails, like the `actionmailer` gem. How do we know it is a rails application? If you look at the Github link, you'll notice this gems lives under `rails/rails` repository.
+First of all you, if you have a rails application you should use gems built for rails, like the `actionmailer` gem. How do we know it is a rails application? If you look at the Github link, you'll notice this gems lives under `rails/rails` repository.
 
 ![](http://readme-pics.s3.amazonaws.com/actionmailer.png)
 
@@ -136,7 +136,7 @@ group :development do
 end
 ```
 
-**Run your test suite with `rsepc` or `learn` to see what gems you'll be adding to your gem file. Add the appropriate gems, specifying their version when necessary, to get the tests passing**.  
+**Run your test suite with `rspec` or `learn` to see what gems you'll be adding to your gem file. Add the appropriate gems, specifying their version when necessary, to get the tests passing**.  
 
 After getting all of your gems in your Gemfile, run `bundle install` from your terminal. This will install the listed gems for you. They won't show up in the directory, but they are in your system, and available.
 
