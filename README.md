@@ -21,7 +21,7 @@ Another option is to go to `https://rubygems.org/` and enter `mail` in the searc
 
 Lets assume we googled and now we are on the `ruby-toolbox.com` website, which shows a list of all the gems that help with sending mails. Which one is the best? How to choose from those many options?
 
-At the top of the page you will the the most popular gem listed - `ActionMailer`, `Mail` and `Pony `are the top 3.
+At the top of the page you will see the most popular gems listed - `ActionMailer`, `Mail` and `Pony `are the top 3.
 
 ![](http://readme-pics.s3.amazonaws.com/the-ruby-toolbox-most-popular.png)
 
