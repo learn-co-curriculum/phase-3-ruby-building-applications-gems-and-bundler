@@ -174,4 +174,4 @@ That's it! Now we can access all of our gems from our `run.rb` file.
 * [RailsCasts](http://railscasts.com/) - [#201 Bundler (revised)](http://railscasts.com/episodes/201-bundler-revised)
 * [Bundler Docs](http://bundler.io/) - [Bundler with Sinatra](http://bundler.io/sinatra.html)
 
-<a href='https://learn.co/lessons/using-bundler' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler' title='Code Along: Using Bundler'>Code Along: Using Bundler</a> on Learn.co and start learning to code for free.</p>
