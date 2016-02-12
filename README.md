@@ -27,7 +27,7 @@ At the top of the page you will see the most popular gems listed - `ActionMailer
 
 Which one should I use for my application? 
 
-First of all you, if you have a rails application you should use gems built for rails, like the `actionmailer` gem. How do we know it is a rails application? If you look at the Github link, you'll notice this gems lives under `rails/rails` repository.
+First of all, if you have a rails application you should use gems built for rails, like the `actionmailer` gem. How do we know it is a rails application? If you look at the Github link, you'll notice this gems lives under `rails/rails` repository.
 
 ![](http://readme-pics.s3.amazonaws.com/actionmailer.png)
 
@@ -174,4 +174,6 @@ That's it! Now we can access all of our gems from our `run.rb` file.
 * [RailsCasts](http://railscasts.com/) - [#201 Bundler (revised)](http://railscasts.com/episodes/201-bundler-revised)
 * [Bundler Docs](http://bundler.io/) - [Bundler with Sinatra](http://bundler.io/sinatra.html)
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler' title='Code Along: Using Bundler'>Code Along: Using Bundler</a> on Learn.co and start learning to code for free.</p>
+<a href='https://learn.co/lessons/using-bundler' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
