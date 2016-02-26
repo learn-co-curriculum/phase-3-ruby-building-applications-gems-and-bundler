@@ -9,7 +9,7 @@
 
 ### What are RubyGems?
 
-Nothing you ever write will be 100% your code. While you probably haven't noticed it every day you use somebody else's code. You didn't write your text editor, you didn't write Ruby, you didn't write your operating system. Those are the types of things that regular users interact with. As a developer though there is a new set of outside code you will work with: Libraries. Libraries (or gems in Ruby parlance) are just bundles of code that someone else wrote for you to integrate into your code base. For example, remember rspec? That's a gem. Instead of everyone having to re-invent a way to do testing for ruby, initially one person and now hundreds of people have worked together to make a single amazing library that everyone can use. It's open source, and you integrate it using the RubyGems tool. Head over to rubygems.org, there are thousands of gems you can pull from that will make your life easier. That is the power of open source. Together we can create something no single person could make.
+Nothing you ever write will be 100% your code. While you probably haven't noticed it every day you use somebody else's code. You didn't write your text editor, you didn't write Ruby, you didn't write your operating system. Those are the types of things that regular users interact with. As a developer there is a new set of outside code you will work with: Libraries. Libraries (or gems in Ruby parlance) are just bundles of code that someone else wrote for you to integrate into your code base. For example, remember rspec? That's a gem. Instead of everyone having to re-invent a way to do testing for ruby, initially one person and now hundreds of people have worked together to make a single amazing library that everyone can use. It's open source, and you integrate it using the RubyGems tool. Head over to rubygems.org, there are thousands of gems you can pull from that will make your life easier. That is the power of open source. Together we can create something no single person could make.
 
 #### How to find a gem?
 
@@ -54,7 +54,32 @@ require 'mail'
 ```
 
 ##### How to add the gem to your Gemfile
-The other way, assuming you have a application, would be to add `gem 'mail', '~> 2.6', '>= 2.6.3'` (which is the current version of the gem) to your `GEMFILE`. This makes sure who ever uses your application would also use the same version of the gem.
+The other way, assuming you have a application, would be to add the following to your `Gemfile`:
+
+ ``` ruby
+ gem 'mail', '~> 2.6', '>= 2.6.3'
+ ```` 
+This line of code specifics that we're using the `mail` gem, and then says we want to use any version of the gem above 2.6.3. We need to specific a version, because what would happen if a major change was made to the gem and suddenly it didn't work with our app? Locking in the version prevents your app from breaking based on a gem change.
+
+### Gem Versions
+
+Just like any software, gems have updated versions. Let's take the example above:
+
+```ruby
+ gem 'mail', '~> 2.6', '>= 2.6.3'
+ ```
+
+Let's take the first part of the versioning `'~> 2.6'`. All gems go through several different series of updates: a major version change, or a minor version change. 
+
+A major version change is reflected by the number before the decimal point, i.e: version 1, 2, or 3. Major version changes don't have to be backwards compatible. This means that if you're app is built using version 1, and the gem updates to version 2, the new version can potentially break your app. 
+
+A minor version change is reflected by the first number after the decimal point, i.e.: 1.0, 1.2, 1.3, etc. All minor version changes have to be backwards compatible. This means that while version 1.2 has more functionality than version 1.0, all the features in 1.0 are supported in 1.2.
+
+The second number after the decimal point reflects a patch, which are changes to a gem to fix a bug but not introduce new functionality. `1.2.3` means major version 1, minor version 2, and a patch version 3.
+
+The `~>` means any minor version change above the one listed. `'~> 2.6'` means any minor version above 2.6 2.7, 2.8, and 2.9 would work, but 3.0 involves a major version change and wouldn't work, as well as any patches in between.
+
+The `mail` gem has a second specification `'>= 2.6.3'`. This means any version greater than or equal to `2.6.3`. Because the `mail` gem has two specification, both have to be true, so this gem couldn't use version `2.6`, because it's lower than `2.6.3`.
 
 ### Gemfile
 
@@ -71,6 +96,10 @@ group :development do
   gem "pry"
 end
 ```
+
+The group syntax uses the keyword `group`, followed by the app environment as a symbol (`:development`, `:test`, `:production`), followed by the keyword `do`. Inside the block, we list all the gems specific to that group. 
+
+In the example above, we grouped `pry` in the development environment. This means that pry isn't accessible in testing or in production. There are a lot of gems specific to the testing environment, like rspec and capybara. You don't need to run tests in the development or production environments, so you don't need those gems loaded there. Groups allow us to specify which environment we need our gems.
 
 ### What is Bundler?
 
@@ -136,7 +165,7 @@ group :development do
 end
 ```
 
-**Run your test suite with `rspec` or `learn` to see what gems you'll be adding to your gem file. Add the appropriate gems, specifying their version when necessary, to get the tests passing**.  
+**Run your test suite with `rspec` or `learn` to see what gems you'll be adding to your gem file. Add the appropriate gems, specifying their version when necessary, to get the tests passing**.
 
 After getting all of your gems in your Gemfile, run `bundle install` from your terminal. This will install the listed gems for you. They won't show up in the directory, but they are in your system, and available.
 
@@ -145,7 +174,9 @@ Running `bundle install` also creates a new file: `Gemfile.lock`. This file note
 
 ### config/environment.rb
 
-This file is used to set up our environment. Here we specify which Bundler groups we want to load. The following code is used to load the `default` group (Anything not explicitly in a group, like `development` in your Gemfile), and the `development` group.
+When you start up an app, your app needs to know the order in which to load files. If you app uses gems, a lot of your code will depend on these external libraries. This means we'd want the gems to be loaded in our app _before_ our own code. If we loaded our code first, we'd get uninitialized constant errors or undefined variable or method errors. This load order matters. We can specify load information in `config/environment.rb` to configure our load path (or load order) so that nothing breaks.
+
+Here we specify which Bundler groups we want to load. The following code is used to load the `default` group (Anything not explicitly in a group, like `development` in your Gemfile), and the `development` group.
 
 **Place the following code in `config/environment.rb`:** 
 
@@ -153,6 +184,8 @@ This file is used to set up our environment. Here we specify which Bundler group
 require 'bundler/setup'
 Bundler.require(:default, :development)
 ```
+
+In the example above, we're first requiring `'bundler/setup'`. If we don't do this, our app won't know to use bundler to install our gems. Without that line, our `Gemfile` becomes pointless.
 
 **Important:** The two arguments that you are passing into the `.require` method *must be passed in in the correct order, shown above*. The test you are trying to pass is testing for order. 
 
