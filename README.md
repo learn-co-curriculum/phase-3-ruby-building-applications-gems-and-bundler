@@ -27,7 +27,7 @@ At the top of the page you will see the most popular gems listed - `ActionMailer
 
 Which one should I use for my application?
 
-First of all, if you have a Rails application you should use gems built for Rails, like the `actionmailer` gem. How do we know it is a Rails application? If you look at the GitHub link, you'll notice this gems lives under the `rails/rails` repository.
+First of all, if you have a Rails application you should use gems built for Rails, like the `actionmailer` gem. How do we know it is a Rails application? If you look at the GitHub link, you'll notice this gem lives under the `rails/rails` repository.
 
 ![](http://readme-pics.s3.amazonaws.com/actionmailer.png)
 
