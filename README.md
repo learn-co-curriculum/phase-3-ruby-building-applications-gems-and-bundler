@@ -79,7 +79,7 @@ The second number after the decimal point reflects a patch, which are changes to
 
 The `~>` means any minor version change above the one listed. `'~> 2.6'` means any minor version above 2.6. 2.7, 2.8, and 2.9 would work (including patches); but version 3.0 wouldn't work because it indicates a new major version.
 
-The `mail` gem has a second specification `'>= 2.6.3'`. This means any version greater than or equal to `2.6.3`. Because the `mail` gem has two specification, both have to be true, so this gem couldn't use version `2.6`, because it's lower than `2.6.3`.
+The `mail` gem has a second specification `'>= 2.6.3'`. This means any version greater than or equal to `2.6.3`. Because the `mail` gem has two specifications, both have to be true, so this gem couldn't use version `2.6`, because it's lower than `2.6.3`.
 
 ### Gemfile
 
