@@ -71,11 +71,11 @@ Just like any software, gems have updated versions. Let's take the example above
 
 Let's take the first part of the versioning `'~> 2.6'`. All gems go through several different series of updates: a major version change, or a minor version change.
 
-A major version change is reflected by the first number (reading from left to right). Major version changes don't have to be backwards compatible. This means that if you're app is built using version 1, and the gem updates to version 2, the new version can potentially break your app.
+A major version change is reflected by the first number (reading from left to right). Major version changes don't have to be backwards compatible. This means that if your app is built using version 1, and the gem updates to version 2, the new version can potentially break your app.
 
 A minor version change is reflected by the number after the first decimal point. All minor version changes have to be backwards compatible. This means that while version 1.2 has more functionality than version 1.0, all the features in 1.0 are supported in 1.2.
 
-The second number after the decimal point reflects a patch, which are changes to a gem to fix a bug but not introduce new functionality. `1.2.3` means major version 1, minor version 2, and a patch version 3.
+The number after the second decimal point reflects a patch, which are changes to a gem to fix a bug but not introduce new functionality. `1.2.3` means major version 1, minor version 2, and a patch version 3.
 
 The `~>` means any minor version change above the one listed. `'~> 2.6'` means any minor version above 2.6. 2.7, 2.8, and 2.9 would work (including patches); but version 3.0 wouldn't work because it indicates a new major version.
 
@@ -210,3 +210,5 @@ That's it! Now we can access all of our gems from our `run.rb` file.
 <a href='https://learn.co/lessons/using-bundler' data-visibility='hidden'>View this lesson on Learn.co</a>
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/using-bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
