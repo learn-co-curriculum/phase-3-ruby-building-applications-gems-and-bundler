@@ -19,7 +19,7 @@ Another option is to go to `https://rubygems.org/` and enter `mail` in the searc
 
 #### How to choose the right gem?
 
-Lets assume we googled and now we are on the `ruby-toolbox.com` website, which shows a list of all the gems that help with sending mails. Which one is the best? How to choose from those many options?
+Let's assume we googled and now we are on the `ruby-toolbox.com` website, which shows a list of all the gems that help with sending mails. Which one is the best? How to choose from those many options?
 
 At the top of the page you will see the most popular gems listed - `ActionMailer`, `Mail`, and `Pony` are the top 3.
 
@@ -33,7 +33,7 @@ First of all, if you have a Rails application you should use gems built for Rail
 
 ![](http://readme-pics.s3.amazonaws.com/mail.png)
 
-We don't have a Rails application, so we need to decide between the `mail` and `pony` gem. The easiest way to do this is by inspecting the total fork count, or by going to the Github repository. Some questions that will help with making your decision:
+We don't have a Rails application, so we need to decide between the `mail` and `pony` gem. The easiest way to do this is by inspecting the total fork count or by going to the Github repository. Some questions that will help with making your decision:
 
 * How many people forked the repo?
 * How many people have contributed to the repo?
@@ -69,17 +69,17 @@ Just like any software, gems have updated versions. Let's take the example above
  gem 'mail', '~> 2.6', '>= 2.6.3'
  ```
 
-Let's take the first part of the versioning `'~> 2.6'`. All gems go through several different series of updates: a major version change, or a minor version change.
+Let's take the first part of the versioning `'~> 2.6'`. All gems go through several different series of updates: a major version change or a minor version change.
 
 A major version change is reflected by the first number (reading from left to right). Major version changes don't have to be backwards compatible. This means that if your app is built using version 1, and the gem updates to version 2, the new version can potentially break your app.
 
 A minor version change is reflected by the number after the first decimal point. All minor version changes have to be backwards compatible. This means that while version 1.2 has more functionality than version 1.0, all the features in 1.0 are supported in 1.2.
 
-The number after the second decimal point reflects a patch, which are changes to a gem to fix a bug but not introduce new functionality. `1.2.3` means major version 1, minor version 2, and a patch version 3.
+The number after the second decimal point reflects a patch, which is a change to a gem to fix a bug but not introduce new functionality. `1.2.3` means major version 1, minor version 2, and a patch version 3.
 
 The `~>` means any minor version change above the one listed. `'~> 2.6'` means any minor version above 2.6. 2.7, 2.8, and 2.9 would work (including patches); but version 3.0 wouldn't work because it indicates a new major version.
 
-The `mail` gem has a second specification `'>= 2.6.3'`. This means any version greater than or equal to `2.6.3`. Because the `mail` gem has two specifications, both have to be true, so this gem couldn't use version `2.6`, because it's lower than `2.6.3`.
+The `mail` gem has a second specification `'>= 2.6.3'`. This means any version greater than or equal to `2.6.3`. Because the `mail` gem has two specifications, both have to be true, so this gem couldn't use version `2.6` because it's lower than `2.6.3`.
 
 ### Gemfile
 
