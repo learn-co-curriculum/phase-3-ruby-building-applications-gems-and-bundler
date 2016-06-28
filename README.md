@@ -97,9 +97,22 @@ group :development do
 end
 ```
 
+#### The Group Syntax
+
 The group syntax uses the keyword `group`, followed by the app environment as a symbol (`:development`, `:test`, and `:production` are the standard environments), followed by the keyword `do`. Inside the block, we list all the gems specific to that group.
 
 In the example above, we grouped `pry` in the development environment. This means that pry isn't accessible in testing or in production. There are a lot of gems specific to the testing environment, like rspec and capybara. You don't need to run tests in the development or production environments, so you don't need those gems loaded there. Groups allow us to specify which environment needs our gems.
+
+#### The Hash Syntax
+
+There is another format with which to group gems in your Gemfile:
+
+```ruby
+gem "pry", :group => "development"
+```
+
+This is called the hash syntax.
+
 
 ### What is Bundler?
 
