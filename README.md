@@ -121,7 +121,7 @@ Bundler is a way to handle code dependencies. To see why that's a big deal, let'
 ### The problem
 Imagine you're writing an amazing app. This app, being built on the shoulders of giants (gems), requires OTHER code to work. If it's a web app, maybe you'll be using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database? Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
 
-One way to handle this, is to have a note in your README, with something like, "Hey, install Sinatra and Sequel".
+One way to handle this is to have a note in your README with something like, "Hey, install Sinatra and Sequel".
 
 #### When disaster strikes
 
@@ -220,8 +220,4 @@ That's it! Now we can access all of our gems from our `run.rb` file.
 * [RailsCasts](http://railscasts.com/) - [#201 Bundler (revised)](http://railscasts.com/episodes/201-bundler-revised)
 * [Bundler Docs](http://bundler.io/) - [Bundler with Sinatra](http://bundler.io/sinatra.html)
 
-<a href='https://learn.co/lessons/using-bundler' data-visibility='hidden'>View this lesson on Learn.co</a>
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/using-bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler' title='Gems and Bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
