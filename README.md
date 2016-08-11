@@ -220,11 +220,11 @@ That's it! Now we can access all of our gems from our `run.rb` file.
 
 You will notice that we use two different require methods while setting up our environment and bin files. 
 
-While both of these methods might look similiar they do different things 
+While both of these methods might look similiar they do different things. Both load a file based on the filename passed in as a parameter and return true if the file was found and loaded successfully and false if it wasn't. However... 
 
-* [require](http://apidock.com/ruby/Kernel/require) loads the filename with the given string argument, returning true if successful and false if the feature is already loaded. If the filename does not resolve to an absolute path, it will be searched for in the directories listed in the path. If it cannot be found it will raise a LoadError.
+* [require](http://apidock.com/ruby/Kernel/require) takes an absolute path for the filename, so the file must either be in the directory from which the application is being run or in one of the directories in your shell's PATH variable (which often includes the directory containing the gems you've installed).
 
-* [require_relative](http://apidock.com/ruby/Kernel/require_relative) loads the file with the given string argument that is relative to the requiring file’s path. If a file is loaded true it is returned and otherwise it will return false. Ruby will also raise a LoadError if not found.
+* [require_relative](http://apidock.com/ruby/Kernel/require_relative) takes a relative path that is relative to the file in which the require statement is called (so it's relative to the file being run, not to the directory from which the code is being called).
 
 
 ## Resources
