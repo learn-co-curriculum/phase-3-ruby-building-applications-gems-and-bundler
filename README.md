@@ -200,7 +200,7 @@ Bundler.require(:default, :development)
 
 In the example above, we're first requiring `'bundler/setup'`. If we don't do this, our app won't know to use bundler to install our gems. Without that line, our `Gemfile` becomes pointless.
 
-**Important:** The two arguments that you are passing into the `.require` method *must be passed in in the correct order, shown above*. The test you are trying to pass is testing for order.
+**Important:** The two arguments that you are passing into the `.require` method *must be passed in the correct order, shown above*. The test you are trying to pass is testing for order.
 
 ### bin/run.rb
 
@@ -232,3 +232,5 @@ While both of these methods might look similiar they do different things. Both l
 * [Bundler Docs](http://bundler.io/) - [Bundler with Sinatra](http://bundler.io/sinatra.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler' title='Gems and Bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/using-bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
