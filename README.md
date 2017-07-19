@@ -9,7 +9,7 @@
 
 ### What are RubyGems?
 
-Nothing you ever write will be 100% your code. While you probably haven't noticed it every day you use somebody else's code. You didn't write your text editor, you didn't write Ruby, you didn't write your operating system. Those are the types of things that regular users interact with. As a developer there is a new set of outside code you will work with: Libraries. Libraries (or "gems" in Ruby parlance) are just bundles of code that someone else wrote for you to integrate into your code base. For example, remember rspec? That's a gem. Instead of everyone having to re-invent a way to do testing for ruby, initially one person and now hundreds of people have worked together to make a single amazing library that everyone can use. It's open source, and you integrate it using the RubyGems tool. Head over to rubygems.org, there are thousands of gems you can pull from that will make your life easier. That is the power of open source. Together we can create something no single person could make.
+Nothing you ever write will be 100% your code. While you probably haven't noticed it, every day you use somebody else's code. You didn't write your text editor, you didn't write Ruby, you didn't write your operating system. Those are the types of things that regular users interact with. As a developer there is a new set of outside code you will work with: Libraries. Libraries (or "gems" in Ruby parlance) are just bundles of code that someone else wrote for you to integrate into your code base. For example, remember rspec? That's a gem. Instead of everyone having to re-invent a way to do testing for ruby, initially one person and now hundreds of people have worked together to make a single amazing library that everyone can use. It's open source, and you integrate it using the RubyGems tool. Head over to rubygems.org. There are thousands of gems you can pull from that will make your life easier. That is the power of open source. Together we can create something no single person could make.
 
 #### How to find a gem?
 
@@ -121,7 +121,7 @@ Bundler is a way to handle code dependencies. To see why that's a big deal, let'
 ### The problem
 Imagine you're writing an amazing app. This app, being built on the shoulders of giants (gems), requires OTHER code to work. If it's a web app, maybe you'll be using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database? Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
 
-One way to handle this, is to have a note in your README, with something like, "Hey, install Sinatra and Sequel".
+One way to handle this is to have a note in your README with something like, "Hey, install Sinatra and Sequel".
 
 #### When disaster strikes
 
@@ -155,7 +155,7 @@ With this, you can make sure everyone working on your app is using the right ver
 Getting started with Bundler is super easy. To create a Gemfile, type `bundle init` in your terminal. You'll notice we created one for you in the repo so running `bundle init` will give you an error.
 
 ###  Anatomy of Bundler files
-There's only one file Bundler requires you have (Gemfile), the other files are conventional for a typical Ruby application, but not required by the use of Bundler for gem management.
+There's only one file Bundler requires you have (Gemfile). The other files are conventional for a typical Ruby application, but not required by the use of Bundler for gem management.
 
 - Gemfile - This file is required by Bundler and contains a source, and a list of file requirements. That's all.
 - config/environment.rb - The environment file is where we'll be loading all of our app's dependencies, from gems to database connections.
@@ -200,7 +200,7 @@ Bundler.require(:default, :development)
 
 In the example above, we're first requiring `'bundler/setup'`. If we don't do this, our app won't know to use bundler to install our gems. Without that line, our `Gemfile` becomes pointless.
 
-**Important:** The two arguments that you are passing into the `.require` method *must be passed in in the correct order, shown above*. The test you are trying to pass is testing for order.
+**Important:** The two arguments that you are passing into the `.require` method *must be passed in the correct order, shown above*. The test you are trying to pass is testing for order.
 
 ### bin/run.rb
 
@@ -216,12 +216,19 @@ require_relative '../config/environment'
 
 That's it! Now we can access all of our gems from our `run.rb` file.
 
+### require and require_relative 
+
+You will notice that we use two different require methods while setting up our environment and bin files. 
+
+While both of these methods might look similiar they do different things. Both load a file based on the filename passed in as a parameter and return true if the file was found and loaded successfully and they will raise a LoadError if it returns false. However... 
+
+* [require](http://apidock.com/ruby/Kernel/require) takes an absolute path for the filename, so the file must either be in the directory from which the application is being run or in one of the directories in your shell's PATH variable (which often includes the directory containing the gems you've installed).
+
+* [require_relative](http://apidock.com/ruby/Kernel/require_relative) takes a relative path that is relative to the file in which the require statement is called (so it's relative to the file being run, not to the directory from which the code is being called).
+
+
 ## Resources
 * [RailsCasts](http://railscasts.com/) - [#201 Bundler (revised)](http://railscasts.com/episodes/201-bundler-revised)
 * [Bundler Docs](http://bundler.io/) - [Bundler with Sinatra](http://bundler.io/sinatra.html)
 
-<a href='https://learn.co/lessons/using-bundler' data-visibility='hidden'>View this lesson on Learn.co</a>
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/using-bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler' title='Gems and Bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
