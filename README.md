@@ -229,6 +229,6 @@ While both of these methods might look similiar they do different things. Both l
 
 ## Resources
 * [RailsCasts](http://railscasts.com/) - [#201 Bundler (revised)](http://railscasts.com/episodes/201-bundler-revised)
-* [Bundler Docs](http://bundler.io/) - [Bundler with Sinatra](http://bundler.io/sinatra.html)
+* [Bundler Docs](http://bundler.io/docs.html) - [Bundler with Sinatra](http://bundler.io/v1.16/guides/sinatra.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler' title='Gems and Bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
