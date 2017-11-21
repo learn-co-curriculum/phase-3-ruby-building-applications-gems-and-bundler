@@ -170,7 +170,7 @@ Add this code to your `Gemfile`
 
 ```ruby
 source "https://rubygems.org"
-
+gem "rspec"
 gem "sinatra"
 
 group :development do
