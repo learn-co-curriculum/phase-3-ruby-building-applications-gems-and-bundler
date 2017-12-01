@@ -13,27 +13,22 @@ Nothing you ever write will be 100% your code. While you probably haven't notice
 
 #### How to find a gem?
 
-One option is always to google. Let's assume we are looking for a gem to send emails. We could google `ruby gem to send emails`. One of the first results is a link to `https://www.ruby-toolbox.com/categories/e_mail`.
+Google is often a good starting place. Let's assume we are looking for a gem to send emails. We could google `ruby gem to send emails`. Another option is to go to `https://rubygems.org/search/advanced` or `https://rubylaser.org/` and enter `email` in the search bar.
 
-Another option is to go to `https://rubygems.org/` and enter `mail` in the search bar.
 
 #### How to choose the right gem?
 
-Let's assume we googled and now we are on the `ruby-toolbox.com` website, which shows a list of all the gems that help with sending mails. Which one is the best? How to choose from those many options?
+Let's assume we decided to search `https://rubygems.org` for the right gem. Let's head to their advanced search interface `https://rubygems.org/search/advanced` and search for `email rails` using the description field. The advanced search interface will give us more flexibility in the way we search for the ideal gem. 
+![]( --- Advanced search interface image link --- )
 
-At the top of the page you will see the most popular gems listed - `ActionMailer`, `Mail`, and `Pony` are the top 3.
+You might be asking which one is the best? How to choose from those many options? Which one should I use for my application?
+![]( --- Search results image link --- )
 
-![](http://readme-pics.s3.amazonaws.com/the-ruby-toolbox-most-popular.png)
+First of all, if you have a Rails application you should use gems built for Rails, like the `actionmailer` gem. How do we know it is a Rails application? If you view the GitHub repository for `actionmailer` you'll notice this gem lives under the `rails/rails` repository.
 
-Which one should I use for my application?
+![]( --- actionmailer github profile link --- )
 
-First of all, if you have a Rails application you should use gems built for Rails, like the `actionmailer` gem. How do we know it is a Rails application? If you look at the GitHub link, you'll notice this gem lives under the `rails/rails` repository.
-
-![](http://readme-pics.s3.amazonaws.com/actionmailer.png)
-
-![](http://readme-pics.s3.amazonaws.com/mail.png)
-
-We don't have a Rails application, so we need to decide between the `mail` and `pony` gem. The easiest way to do this is by inspecting the total fork count or by going to the Github repository. Some questions that will help with making your decision:
+We don't have a Rails application, how do we decide what is the right gem? The easiest way to do this is by inspecting the total fork count or by going to the Github repository. Some questions that will help with making your decision:
 
 * How many people forked the repo?
 * How many people have contributed to the repo?
