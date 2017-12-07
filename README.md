@@ -19,14 +19,14 @@ Google is often a good starting place. Let's assume we are looking for a gem to 
 #### How to choose the right gem?
 
 Let's assume we decided to search `https://rubygems.org` for the right gem. Let's head to their advanced search interface `https://rubygems.org/search/advanced` and search for `email rails` using the description field. The advanced search interface will give us more flexibility in the way we search for the ideal gem. 
-![]( --- Advanced search interface image link --- )
+![](https://curriculum-content.s3.amazonaws.com/web-development/ruby/rubygems-advanced-search.png)
 
 You might be asking which one is the best? How to choose from those many options? Which one should I use for my application?
-![]( --- Search results image link --- )
+![](https://curriculum-content.s3.amazonaws.com/web-development/ruby/rubygem-advanced-search-results.png)
 
 First of all, if you have a Rails application you should use gems built for Rails, like the `actionmailer` gem. How do we know it is a Rails application? If you view the GitHub repository for `actionmailer` you'll notice this gem lives under the `rails/rails` repository.
 
-![]( --- actionmailer github profile link --- )
+![](https://curriculum-content.s3.amazonaws.com/web-development/ruby/actionmailer-github.png)
 
 We don't have a Rails application, how do we decide what is the right gem? The easiest way to do this is by inspecting the total fork count or by going to the Github repository. Some questions that will help with making your decision:
 
