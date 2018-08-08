@@ -56,7 +56,7 @@ The other way, assuming you have an application, is to add the following to your
  ``` ruby
  gem 'mail', '~> 2.6', '>= 2.6.3'
  ```
-This line of code says that we're using the `mail` gem, and then says that we want to use any version of the gem above 2.6.3. Why do we need to specify a version? Well, what would happen if a major change was made to the gem and suddenly it didn't work with your app? Locking in the version prevents your app from breaking based on a gem change.
+This line of code says that we're using the `mail` gem, and then says that we want to use any version of the gem above 2.6.3. Why do we need to specify a version? Well, what would happen if a major change were made to the gem and suddenly it didn't work with your app? Locking in the version prevents your app from breaking based on a gem change.
 
 ### Gem Versions
 
