@@ -38,7 +38,7 @@ describe "Bundler" do
     end
 
     # http://bundler.io/git.html
-    it "should list the awesome_print gem specifying a remote git repository (use github)" do
+    it "should list the awesome_print gem specifying a remote git repository using the SSH URL (use github)" do
       expect(@gemfile_text =~ /gem ['"]awesome_print['"], ?(git:|:git ?=>) ?['"]git@github\.com:awesome\-print\/awesome_print\.git['"]/).not_to eq(nil)
     end
 
