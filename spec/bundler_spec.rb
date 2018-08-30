@@ -49,7 +49,7 @@ describe "Bundler" do
 
       # http://bundler.io/v1.3/groups.html
       it "should contain the pry gem in the development group using a hash argument to the gem method" do
-        expect(@gemfile_text =~ /gem ['"]pry['"], ?(group:|:group ?=>) ?(:development|['"]development['"])/).not_to eq(nil)
+        expect(@gemfile_text).to  match(/gem ['"]pry['"], ?(group:|:group ?=>) ?(:development|['"]development['"])/) | match(/group ?(:development|['"]development['"])[\s\S]*gem ['"]pry['"][\s\S]*end/)
         expect(@bundle_output =~ /pry/).not_to eq(nil)
 
         bundle_output_without_development = ""
