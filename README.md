@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 # Code Along: Using Bundler
 
 ## Objectives
+=======
+# Using Bundler
+>>>>>>> Update README.md
 
 1.  Learn about requiring external code libraries, called gems, in your Ruby
     applications.
