@@ -100,17 +100,32 @@ Just like any software, gems have updated versions. Let's take the example above
 gem 'mail', '~> 2.6', '>= 2.6.3'
 ```
 
-Let's take the first part of the versioning `'~> 2.6'`. All gems go through several different series of updates: a major version change or a minor version change.
+Let's take the first part of the versioning `'~> 2.6'`. All gems go through
+several different series of updates: a major version change or a minor version
+change.
 
-A major version change is reflected by the first number (reading from left to right). Major version changes don't have to be backwards compatible. This means that if your app is built using version 1, and the gem updates to version 2, the new version can potentially break your app.
+A major version change is reflected by the first number (reading from left to
+right). Major version changes don't have to be backwards compatible. This means
+that if your app is built using version 1, and the gem updates to version 2, the
+new version can potentially break your app.
 
-A minor version change is reflected by the number after the first decimal point. All minor version changes have to be backwards compatible. This means that while version 1.2 has more functionality than version 1.0, all the features in 1.0 are supported in 1.2.
+A minor version change is reflected by the number after the first decimal point.
+All minor version changes have to be backwards compatible. This means that while
+version 1.2 has more functionality than version 1.0, all the features in 1.0 are
+supported in 1.2.
 
-The number after the second decimal point reflects a patch, which is a change to a gem to fix a bug but not introduce new functionality. `1.2.3` means major version 1, minor version 2, and a patch version 3.
+The number after the second decimal point reflects a patch, which is a change to
+a gem to fix a bug but not introduce new functionality. `1.2.3` means major
+version 1, minor version 2, and a patch version 3.
 
-The `~>` means any minor version change above the one listed. `'~> 2.6'` means any minor version above 2.6. 2.7, 2.8, and 2.9 would work (including patches); but version 3.0 wouldn't work because it indicates a new major version.
+The `~>` means any minor version change above the one listed. `'~> 2.6'` means
+any minor version above 2.6. 2.7, 2.8, and 2.9 would work (including patches);
+but version 3.0 wouldn't work because it indicates a new major version.
 
-The `mail` gem has a second specification `'>= 2.6.3'`. This means any version greater than or equal to `2.6.3`. Because the `mail` gem has two specifications, both have to be true, so this gem couldn't use version `2.6` because it's lower than `2.6.3`.
+The `mail` gem has a second specification `'>= 2.6.3'`. This means any version
+greater than or equal to `2.6.3`. Because the `mail` gem has two specifications,
+both have to be true, so this gem couldn't use version `2.6` because it's lower
+than `2.6.3`.
 
 ### Gemfile
 
@@ -174,9 +189,13 @@ let's try to understand the problem a bit.
 
 #### The Problem
 
-Imagine you're writing an amazing app. This app, being built on the shoulders of giants (gems), requires OTHER code to work. If it's a web app, maybe you'll be using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database? Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
+Imagine you're writing an amazing app. This app, being built on the shoulders of
+giants (gems), requires OTHER code to work. If it's a web app, maybe you'll be
+using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database?
+Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
 
-One way to handle this is to have a note in your README with something like, "Hey, install Sinatra and Sequel".
+One way to handle this is to have a note in your README with something like,
+"Hey, install Sinatra and Sequel".
 
 #### When disaster strikes
 
@@ -188,13 +207,18 @@ One way to handle this is to have a note in your README with something like, "He
 >
 > #### - Steven Nuñez
 
-Software is complex. One change to a dependency can completely break your app. We can remedy this by enforcing that we use a specific version of the gem. But this, too, has its problems. How do you enforce this? Are you going to trust that everyone has the right version?
+Software is complex. One change to a dependency can completely break your app.
+We can remedy this by enforcing that we use a specific version of the gem. But
+this, too, has its problems. How do you enforce this? Are you going to trust
+that everyone has the right version?
 
 No! We're programmers, dammit!
 
 ### Enter bundler
 
-[Bundler](http://bundler.io/) handles all of this for you. It provides you with a `Gemfile` where you can keep your requirements in one place. The `Gemfile` creates a single place for gems to be required and versions to be specified.
+[Bundler](http://bundler.io/) handles all of this for you. It provides you with
+a `Gemfile` where you can keep your requirements in one place. The `Gemfile`
+creates a single place for gems to be required and versions to be specified.
 
 - Need the Sinatra gem for your project? Add `gem 'sinatra'`to your Gemfile.
 - Need the Sinatra gem, but at version 1.4.5? Add `gem 'sinatra', '1.4.5'` to your Gemfile.
@@ -202,22 +226,29 @@ No! We're programmers, dammit!
 
 [Read more here](http://bundler.io/gemfile.html)
 
-With this, you can make sure everyone working on your app is using the right version. Now to get the code working :-)
+With this, you can make sure everyone working on your app is using the right
+version. Now to get the code working :-)
 
 ## Code along
 
 ### Using Bundler
 
-Getting started with Bundler is super easy. To create a Gemfile, type `bundle init` in your terminal. You'll notice we created one for you in the repo so running `bundle init` will give you an error.
+Getting started with Bundler is super easy. To create a Gemfile, type `bundle init` in your terminal. You'll notice we created one for you in the repo so
+running `bundle init` will give you an error.
 
 ### Anatomy of Bundler files
 
-There's only one file Bundler requires you have (Gemfile). The other files are conventional for a typical Ruby application, but not required by the use of Bundler for gem management.
+There's only one file Bundler requires you have (Gemfile). The other files are
+conventional for a typical Ruby application, but not required by the use of
+Bundler for gem management.
 
-- Gemfile - This file is required by Bundler and contains a source, and a list of file requirements. That's all.
-- config/environment.rb - The environment file is where we'll be loading all of our app's dependencies, from gems to database connections.
+- Gemfile - This file is required by Bundler and contains a source, and a list of
+  file requirements. That's all.
+- config/environment.rb - The environment file is where we'll be loading all of our
+  app's dependencies, from gems to database connections.
 
-- bin/run.rb - This file will start our application. This file will require the environment file we created earlier to provide our app with access to our gems.
+- bin/run.rb - This file will start our application. This file will require the
+  environment file we created earlier to provide our app with access to our gems.
 
 We'll be using these files in the test suite, so don't rename them.
 
@@ -235,17 +266,30 @@ gem "pry"
 end
 ```
 
-**Run your test suite with `rspec` or `learn` to see what gems you'll be adding to your gem file. Add the appropriate gems, specifying their version when necessary, to get the tests passing**.
+**Run your test suite with `rspec` or `learn` to see what gems you'll be adding to
+your gem file. Add the appropriate gems, specifying their version when
+necessary, to get the tests passing**.
 
-After getting all of your gems in your Gemfile, run `bundle install` from your terminal. This will install the listed gems for you. They won't show up in the directory, but they are in your system, and available.
+After getting all of your gems in your Gemfile, run `bundle install` from your
+terminal. This will install the listed gems for you. They won't show up in the
+directory, but they are in your system, and available.
 
-Running `bundle install` also creates a new file: `Gemfile.lock`. This file notes which specific version of the gem was installed.
+Running `bundle install` also creates a new file: `Gemfile.lock`. This file
+notes which specific version of the gem was installed.
 
 ### config/environment.rb
 
-When you start up an app, your app needs to know the order in which to load files. If your app uses gems, a lot of your code will depend on these external libraries. This means we'd want the gems to be loaded in our app _before_ our own code. If we loaded our code first, we'd get uninitialized constant errors or undefined variable or method errors. Load order matters. We can specify load information in `config/environment.rb` to configure our load path (or load order) so that nothing breaks.
+When you start up an app, your app needs to know the order in which to load
+files. If your app uses gems, a lot of your code will depend on these external
+libraries. This means we'd want the gems to be loaded in our app _before_ our
+own code. If we loaded our code first, we'd get uninitialized constant errors or
+undefined variable or method errors. Load order matters. We can specify load
+information in `config/environment.rb` to configure our load path (or load
+order) so that nothing breaks.
 
-Here we specify which Bundler groups we want to load. The following code is used to load the `default` group (anything not explicitly in a group, like `test` in your Gemfile) and the `development` group.
+Here we specify which Bundler groups we want to load. The following code is used
+to load the `default` group (anything not explicitly in a group, like `test` in
+your Gemfile) and the `development` group.
 
 **Place the following code in `config/environment.rb`:**
 
@@ -254,9 +298,13 @@ require 'bundler/setup'
 Bundler.require(:default, :development)
 ```
 
-In the example above, we're first requiring `'bundler/setup'`. If we don't do this, our app won't know to use bundler to install our gems. Without that line, our `Gemfile` becomes pointless.
+In the example above, we're first requiring `'bundler/setup'`. If we don't do
+this, our app won't know to use bundler to install our gems. Without that line,
+our `Gemfile` becomes pointless.
 
-**Important:** The two arguments that you are passing into the `.require` method _must be passed in the correct order, shown above_. The test you are trying to pass is testing for order.
+**Important:** The two arguments that you are passing into the `.require` method _must be
+passed in the correct order, shown above_. The test you are trying to pass is
+testing for order.
 
 ### bin/run.rb
 
@@ -274,13 +322,22 @@ That's it! Now we can access all of our gems from our `run.rb` file.
 
 ### require and require_relative
 
-You will notice that we use two different require methods while setting up our environment and bin files.
+You will notice that we use two different require methods while setting up our
+environment and bin files.
 
-While both of these methods might look similiar they do different things. Both load a file based on the filename passed in as a parameter and return true if the file was found and loaded successfully and they will raise a LoadError if it returns false. However...
+While both of these methods might look similiar they do different things. Both
+load a file based on the filename passed in as a parameter and return true if
+the file was found and loaded successfully and they will raise a LoadError if it
+returns false. However...
 
-- [require](http://apidock.com/ruby/Kernel/require) takes an absolute path for the filename, so the file must either be in the directory from which the application is being run or in one of the directories in your shell's PATH variable (which often includes the directory containing the gems you've installed).
+- [require][require] takes an absolute path for the
+  filename, so the file must either be in the directory from which the application
+  is being run or in one of the directories in your shell's PATH variable (which
+  often includes the directory containing the gems you've installed).
 
-- [require_relative](http://apidock.com/ruby/Kernel/require_relative) takes a relative path that is relative to the file in which the require statement is called (so it's relative to the file being run, not to the directory from which the code is being called).
+- [require_relative][require_relative] takes a relative path that is relative to
+  the file in which the require statement is called (so it's relative to the
+  file being run, not to the directory from which the code is being called).
 
 ## Resources
 
@@ -288,3 +345,6 @@ While both of these methods might look similiar they do different things. Both l
 - [Bundler Docs](http://bundler.io/docs.html) - [Bundler with Sinatra](http://bundler.io/v1.16/guides/sinatra.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler' title='Gems and Bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
+
+[require]: http://apidock.com/ruby/Kernel/require
+[require_relative]: http://apidock.com/ruby/Kernel/require_relative
