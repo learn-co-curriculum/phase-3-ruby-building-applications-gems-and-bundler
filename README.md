@@ -127,6 +127,31 @@ greater than or equal to `2.6.3`. Because the `mail` gem has two specifications,
 both have to be true, so this gem couldn't use version `2.6` because it's lower
 than `2.6.3`.
 
+## Gem Sources
+
+By default, Bundler will try to find gems at the default `source` that you
+specified in the top of your `Gemfile`, `https://rubygems.org`. But sometimes
+you might be working with a gem whose developer(s) haven't yet pushed the code
+to RubyGems.org. Maybe you're one of those developers yourself! In that case,
+Bundler provides a few options.
+
+You can refer to the gem via its GitHub repository:
+
+```ruby
+gem 'rack', git: 'https://github.com/rack/rack'
+```
+
+Provided that the GitHub repository is for the gem only, this simple invocation
+should work. If the gem code is in a subdirectory of the repository, a number
+of options are available to help you help Bundler find the gem. Consult the Bundler
+[documentation][git-bundler] for options.
+
+Or, perhaps the gem is private and needs to be accessed via SSH. No problem.
+
+```ruby
+gem 'nokogiri', :git => 'login@example.com:some-user-account/some-private-gem.git'
+```
+
 ### Gemfile
 
 The Gemfile is a list of gems your app uses. The Gemfile lets you set up groups,
@@ -334,3 +359,4 @@ returns false. However...
 
 [require]: http://apidock.com/ruby/Kernel/require
 [require_relative]: http://apidock.com/ruby/Kernel/require_relative
+[git-bundler]: https://bundler.io/guides/git.html
