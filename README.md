@@ -118,7 +118,8 @@ The number after the second decimal point reflects a patch, which is a change to
 a gem to fix a bug but not introduce new functionality. `1.2.3` means major
 version 1, minor version 2, and a patch version 3.
 
-The `~>` means any minor version change above the one listed. `'~> 2.6'` means
+The `~>` means any minor version change above the one listed. For some reason lost
+to history, Rubyists have decided to call this `~>` "Twiddle-Wakka." `'~> 2.6'` means
 any minor version above 2.6. 2.7, 2.8, and 2.9 would work (including patches);
 but version 3.0 wouldn't work because it indicates a new major version.
 
