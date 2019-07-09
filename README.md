@@ -1,14 +1,14 @@
-# Code Along: Using Bundler
+# Using Bundler Code-Along
 
 ## Objectives
 
-1.  Learn about requiring external code libraries, called gems, in your Ruby
-    applications.
+- Learn about requiring external code libraries, called gems, in your Ruby
+  applications.
 
-2.  Learn how to use Bundler and a Gemfile to manage gems and their dependencies
-    in your applications.
+- Learn how to use Bundler and a Gemfile to manage gems and their dependencies
+  in your applications.
 
-#### What are RubyGems?
+### Define Ruby Gems
 
 Nothing you ever write will be 100% your code. While you probably haven't
 noticed it, every day you use somebody else's code. You didn't write your text
@@ -16,7 +16,7 @@ editor, you didn't write Ruby, you didn't write your operating system. Those are
 the types of things that regular users interact with. As a developer, you will
 have a new set of outside code to work with: Libraries. Libraries (or "gems" in
 Ruby parlance) are just bundles of code that someone else wrote for you to
-integrate into your code base. For example, remember rspec? That's a gem.
+integrate into your code base. For example, remember RSpec? That's a gem.
 Instead of everyone having to re-invent a way to do testing for ruby, initially
 one person and now hundreds of people have worked together to make a single
 amazing library that everyone can use. It's open source, and you integrate it
@@ -24,14 +24,14 @@ using the RubyGems tool. Head over to rubygems.org. There are thousands of gems
 you can pull from that will make your life easier. That is the power of open
 source. Together we can create something no single person could make.
 
-#### How to Find a Gem?
+### How to Find a Gem
 
 Google is often a good starting place. Let's assume we are looking for a gem to
 send emails. We could google `ruby gem to send emails`. Another option is to go
 to `https://rubygems.org/search/advanced` or `https://rubylaser.org/` and enter
 `email` in the search bar.
 
-#### How to Choose the Right Gem?
+#### How to Choose the Right Gem
 
 Let's assume we decided to search `https://rubygems.org` for the right gem.
 Let's head to their advanced search interface
@@ -39,19 +39,19 @@ Let's head to their advanced search interface
 description field. The advanced search interface will give us more flexibility
 in the way we search for the ideal gem.
 
-![](https://curriculum-content.s3.amazonaws.com/web-development/ruby/rubygems-advanced-search.png)
+![advanced gem search](https://curriculum-content.s3.amazonaws.com/web-development/ruby/rubygems-advanced-search.png)
 
 You might be asking which one is the best? How to choose from those many
 options? Which one should I use for my application?
 
-![](https://curriculum-content.s3.amazonaws.com/web-development/ruby/rubygem-advanced-search-results.png)
+![search results](https://curriculum-content.s3.amazonaws.com/web-development/ruby/rubygem-advanced-search-results.png)
 
 First of all, if you have a Rails application you should use gems built for
 Rails, like the `actionmailer` gem. How do we know it is a Rails application? If
 you view the GitHub repository for `actionmailer` you'll notice this gem lives
 under the `rails/rails` repository.
 
-![](https://curriculum-content.s3.amazonaws.com/web-development/ruby/actionmailer-github.png)
+![actionmailer github repository](https://curriculum-content.s3.amazonaws.com/web-development/ruby/actionmailer-github.png)
 
 We don't have a Rails application, how do we decide what is the right gem? The
 easiest way to do this is by inspecting the total fork count or by going to the
@@ -62,11 +62,11 @@ Github repository. Some questions that will help with making your decision:
 - How many open issues does the repo have?
 - Does the repo have a test suite?
 
-#### How to install a gem?
+#### How to Install a Gem
 
 We are going to use the `mail` gem.
 
-#### How to 'require' a gem
+#### How to Require a Gem
 
 One way of installing it would be to run `gem install mail` in your terminal and
 then `require` the gem in the file where you want to use that gem.
@@ -77,7 +77,7 @@ For example:
 require 'mail'
 ```
 
-#### How to add the gem to your Gemfile
+#### How to Add the Gem to Your Gemfile
 
 The other way, assuming you have an application, is to add the following to your
 `Gemfile`:
@@ -105,12 +105,12 @@ several different series of updates: a major version change or a minor version
 change.
 
 A major version change is reflected by the first number (reading from left to
-right). Major version changes don't have to be backwards compatible. This means
+right). Major version changes don't have to be backward compatible. This means
 that if your app is built using version 1, and the gem updates to version 2, the
 new version can potentially break your app.
 
 A minor version change is reflected by the number after the first decimal point.
-All minor version changes have to be backwards compatible. This means that while
+All minor version changes have to be backward compatible. This means that while
 version 1.2 has more functionality than version 1.0, all the features in 1.0 are
 supported in 1.2.
 
@@ -143,7 +143,7 @@ gem 'rack', git: 'https://github.com/rack/rack'
 ```
 
 Provided that the GitHub repository is for the gem only, this simple invocation
-should work. If the gem code is in a subdirectory of the repository, a number
+should work. If the gem code is in a sub-directory of the repository, a number
 of options are available to help you help Bundler find the gem. Consult the Bundler
 [documentation][git-bundler] for options.
 
@@ -208,7 +208,7 @@ environments, we can include them both in an array:
 gem "pry", :groups => [:development, :test]
 ```
 
-#### What is Bundler?
+#### Define Bundler
 
 Bundler is a way to handle code dependencies. To see why that's a big deal,
 let's try to understand the problem a bit.
@@ -223,7 +223,7 @@ Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
 One way to handle this is to have a note in your README with something like,
 "Hey, install Sinatra and Sequel".
 
-### Enter bundler
+### Enter Bundler
 
 [Bundler](http://bundler.io/) handles all of this for you. It provides you with
 a `Gemfile` where you can keep your requirements in one place. The `Gemfile`
@@ -239,14 +239,15 @@ creates a single place for gems to be required and versions to be specified.
 With this, you can make sure everyone working on your app is using the right
 version. Now to get the code working :-)
 
-## Code along
+## Code-Along
 
 ### Using Bundler
 
-Getting started with Bundler is super easy. To create a Gemfile, type `bundle init` in your terminal. You'll notice we created one for you in the repo so
+Getting started with Bundler is super easy. To create a Gemfile, type `bundle
+init` in your terminal. You'll notice we created one for you in the repo so
 running `bundle init` will give you an error.
 
-### Anatomy of Bundler files
+### Anatomy of Bundler Files
 
 There's only one file Bundler requires you have (Gemfile). The other files are
 conventional for a typical Ruby application, but not required by the use of
@@ -262,7 +263,7 @@ Bundler for gem management.
 
 We'll be using these files in the test suite, so don't rename them.
 
-### Gemfile
+### Configure Gemfile
 
 Add this code to your `Gemfile`
 
@@ -287,7 +288,7 @@ directory, but they are in your system, and available.
 Running `bundle install` also creates a new file: `Gemfile.lock`. This file
 notes which specific version of the gem was installed.
 
-### config/environment.rb
+### Working with `config/environment.rb`
 
 When you start up an app, your app needs to know the order in which to load
 files. If your app uses gems, a lot of your code will depend on these external
@@ -316,7 +317,7 @@ our `Gemfile` becomes pointless.
 passed in the correct order, shown above_. The test you are trying to pass is
 testing for order.
 
-### bin/run.rb
+### Working with `bin/run.rb`
 
 This is where the action is. This is where our app logic goes, and where we make our millions.
 
@@ -330,12 +331,12 @@ require_relative '../config/environment'
 
 That's it! Now we can access all of our gems from our `run.rb` file.
 
-### require and require_relative
+### Using `require` and `require_relative`
 
 You will notice that we use two different require methods while setting up our
 environment and bin files.
 
-While both of these methods might look similiar they do different things. Both
+While both of these methods might look similar they do different things. Both
 load a file based on the filename passed in as a parameter and return true if
 the file was found and loaded successfully and they will raise a LoadError if it
 returns false. However...
@@ -361,4 +362,3 @@ returns false. However...
 [require]: http://apidock.com/ruby/Kernel/require
 [require_relative]: http://apidock.com/ruby/Kernel/require_relative
 [git-bundler]: https://bundler.io/guides/git.html
-
