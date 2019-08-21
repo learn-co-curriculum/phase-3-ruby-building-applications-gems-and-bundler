@@ -16,93 +16,203 @@ editor, you didn't write Ruby, you didn't write your operating system. Those are
 the types of things that regular users interact with. As a developer, you will
 have a new set of outside code to work with: Libraries. Libraries (or "gems" in
 Ruby parlance) are just bundles of code that someone else wrote for you to
-integrate into your code base. For example, remember RSpec? That's a gem.
-Instead of everyone having to re-invent a way to do testing for ruby, initially
+integrate into your codebase. For example, remember RSpec? That's a gem.
+Instead of everyone having to re-invent a way to do testing for Ruby, initially
 one person and now hundreds of people have worked together to make a single
-amazing library that everyone can use. It's open source, and you integrate it
-using the RubyGems tool. Head over to rubygems.org. There are thousands of gems
-you can pull from that will make your life easier. That is the power of open
-source. Together we can create something no single person could make.
+amazing library that everyone can use. What a time saver for us! We don't need
+to create our own testing framework.
+
+RSpec is open source, and you integrate into a Ruby application using the
+RubyGems tool. There are thousands of gems like RSpec that are incredibly
+helpful to us and are free to use and incorporate into your projects. That is
+the power of open source. Together we can create something no single person
+could make! In this lesson, we're going to take a look at gems and how to use
+them in your applications.
+
+### How to Install a Gem
+
+Gems are primarily hosted by [RubyGems][]
+([https://rubygems.org/][]), a free service provided for
+the Ruby community. If you've gone through the manual setup for your local
+environment or are using the in-browser IDE, you should be able to write the
+following in your terminal and type:
+
+```bash
+gem install rspec
+```
+
+And see your terminal respond by indicating that RSpec has been installed. When
+we run this command, Ruby locates the gem, [looking in RubyGems by default][], and
+if found, downloads and installs the latest version to your computer.
+
+[looking in RubyGems by default]: https://rubygems.org/gems/rspec/versions/3.8.0
+
+The key, really, is knowing the correct name so that you install the gem that
+you want.
 
 ### How to Find a Gem
 
-Google is often a good starting place. Let's assume we are looking for a gem to
-send emails. We could google `ruby gem to send emails`. Another option is to go
-to `https://rubygems.org/search/advanced` or `https://rubylaser.org/` and enter
-`email` in the search bar.
+To find gems, Google is often a good starting place. Often, you may find a
+GitHub repository that maintains the gem files this way, and if the gem is well
+maintained, this repository's README should contain info about how to install
+it.
+
+Alternatively, you can also search for gems directly using
+[https://rubygems.org/][].
+
+[https://rubygems.org/]: https://rubygems.org/
+
+So, for instance, let's imagine we are looking for a gem to improve how Ruby
+prints data to the terminal. We could google something like
+`ruby gem print output`. Another option is to go to
+[https://rubygems.org/search/advanced][] and enter `print` in the search bar.
+
+[https://rubygems.org/search/advanced]: https://rubygems.org/search/advanced
 
 #### How to Choose the Right Gem
 
 Let's assume we decided to search `https://rubygems.org` for the right gem.
 Let's head to their advanced search interface
-`https://rubygems.org/search/advanced` and search for `email rails` using the
+`https://rubygems.org/search/advanced` and search for `print` using the
 description field. The advanced search interface will give us more flexibility
 in the way we search for the ideal gem.
 
-![advanced gem search](https://curriculum-content.s3.amazonaws.com/web-development/ruby/rubygems-advanced-search.png)
+![advanced gem search](https://curriculum-content.s3.amazonaws.com/module-1/gem_advanced_search.png)
+
+Searching by entering `print` into the name field yields the following results:
+
+![search results](https://curriculum-content.s3.amazonaws.com/module-1/gem_search_result.png)
 
 You might be asking which one is the best? How to choose from those many
 options? Which one should I use for my application?
 
-![search results](https://curriculum-content.s3.amazonaws.com/web-development/ruby/rubygem-advanced-search-results.png)
+There are a few indicators that should help:
 
-First of all, if you have a Rails application you should use gems built for
-Rails, like the `actionmailer` gem. How do we know it is a Rails application? If
-you view the GitHub repository for `actionmailer` you'll notice this gem lives
-under the `rails/rails` repository.
+- How many people have downloaded the gem?
+- Does the description match what we're looking for?
 
-![actionmailer github repository](https://curriculum-content.s3.amazonaws.com/web-development/ruby/actionmailer-github.png)
+In this example, one gem stand way out from the rest - `awesome_print`, and the
+description sounds pretty close to what we're looking for. The second contender,
+`table_print` might _also_ be an option, though it has fewer downloads.
+Continuing down the list, the third option is clearly _not what we want_ - it
+seems to be a gem specific to a certain API and has few downloads.
 
-We don't have a Rails application, how do we decide what is the right gem? The
-easiest way to do this is by inspecting the total fork count or by going to the
-Github repository. Some questions that will help with making your decision:
+If you are in a situation where it isn't clear what gem to use, there are
+additional things to consider. For one, most gems will have homepages and files
+maintained on GitHub (linked as the gem's 'Homepage' on RubyGems). Looking at
+GitHub directly, we can ask additional questions to help us find the right gem.
+For instance:
 
-- How many people forked the repo?
-- How many people have contributed to the repo?
-- How many open issues does the repo have?
-- Does the repo have a test suite?
+- **Does the README indicate this gem is what you are looking for?** At a
+  minimum, scan over the README to see if the gem fits what you are looking for.
+  A well-developed README may also be a good indicator of a more professionally
+  developed gem.
+- **Looking at the repository in general, has it been updated fairly recently?**
+  Sometimes great gems can become abandoned and a lack of updates might indicate
+  this.
+- **How many people have contributed to the repo?** Many contributors is a good
+  indicator that the gem has been well maintained and updated. A single
+  contributor, while not disqualifying, could indicate the gem is a personal
+  project rather than a professionally built tool.
+- **How many open issues does the repo have?** Real, professional tools have
+  issues. Looking at issues, however, can give you a sense of how well
+  maintained the tool is.
+- **Does the repo have a test suite?** A well-developed set of tests is an
+  indicator that the gem was built with a thought out process.
+- **How many people have forked the repository?** More forks is an indicator of
+  a more popular gem.
 
-#### How to Install a Gem
+Seems like [`awesome_print`][] is a good gem to try for our printing example.
+While [`table_print`][] has some cool specific features, `awesome_print` seems
+to be widely used and is well maintained.
 
-We are going to use the `mail` gem.
+[`awesome_print`]: https://github.com/awesome-print/awesome_print
+[`table_print`]: https://github.com/arches/table_print
 
-#### How to Require a Gem
-
-One way of installing it would be to run `gem install mail` in your terminal and
-then `require` the gem in the file where you want to use that gem.
-
-For example:
+From the instructions, looks like we can install `awesome_print` by typing
+`gem install awesome_print`. We can test out the gem in IRB by requiring it:
 
 ```ruby
-require 'mail'
+require 'awesome_print'
 ```
 
-#### How to Add the Gem to Your Gemfile
-
-The other way, assuming you have an application, is to add the following to your
-`Gemfile`:
+From the gem instructions, this gem will print out arrays and hashes nicely, so
+let's try the following in IRB:
 
 ```ruby
-gem 'mail', '~> 2.6', '>= 2.6.3'
+array = [1,2,3,4]
+hash = {:a => 1, :b => 5}
+ap array
+ap hash
 ```
 
-This line of code says that we're using the `mail` gem, and then says that we
-want to use any version of the gem above 2.6.3. Why do we need to specify a
-version? Well, what would happen if a major change were made to the gem and
-suddenly it didn't work with your app? Locking in the version prevents your app
-from breaking based on a gem change.
+Instead of the normal output, `awesome_print` should print `array` and `hash`
+with each value or key/value separated on a new line:
+
+```ruby
+[
+    [0] 1,
+    [1] 2,
+    [2] 3,
+    [3] 4
+]
+```
+
+```ruby
+{
+    :a => 1,
+    :b => 5
+}
+```
+
+Neat! With the gem installed locally, all we need to do is include the `require`
+statement in our own code and we will be able to use the gem.
+
+#### Using a Gemfile and Bundler
+
+When it comes to building applications that others will use, if a Ruby
+application relies on a gem, anyone using that app will need to install the gem
+to get the application to function correctly.
+
+To make this process easy, we use a `Gemfile`. A `Gemfile` lists all the gem
+dependencies for your application as well as the source where they can be
+downloaded, allowing _other users_ to quickly install all the gems at once. We
+do this using [Bundler][], typing `bundle install` in the terminal while in a
+Ruby application directory. Bundler will install any gems listed.
+
+[Bundler]: https://bundler.io/
+
+#### How to Add the Gem to your Gemfile
+
+A typical Gemfile has two parts - a source at the top and a list of gems. A
+minimal Gemfile could look like the following:
+
+```ruby
+source "https://rubygems.org"
+
+gem 'awesome_print'
+```
+
+Any gems your application relies on should be listed out in the `Gemfile` with
+`gem` preceding them. This line of code says that we're using the
+`awesome_print` gem in this application.
 
 ### Gem Versions
 
-Just like any software, gems have updated versions. Let's take the example above:
+In addition to listing the gem, we can also specify which versions this
+application works with. For instance, we could add the following:
 
 ```ruby
-gem 'mail', '~> 2.6', '>= 2.6.3'
+gem 'awesome_print', '~> 1.8'
 ```
 
-Let's take the first part of the versioning `'~> 2.6'`. All gems go through
-several different series of updates: a major version change or a minor version
-change.
+Why specify version? Sometimes, a gem developer makes a major change to their
+gem. If you've built an app to work using _one_ version of a gem, a future
+version might require a different code implementation, causing your app to
+break until you fix it!
+
+All gems go through several types of updates: major version changes, minor
+version changes and patches.
 
 A major version change is reflected by the first number (reading from left to
 right). Major version changes don't have to be backward compatible. This means
@@ -110,31 +220,40 @@ that if your app is built using version 1, and the gem updates to version 2, the
 new version can potentially break your app.
 
 A minor version change is reflected by the number after the first decimal point.
-All minor version changes have to be backward compatible. This means that while
+All minor version changes should be backward compatible. This means that while
 version 1.2 has more functionality than version 1.0, all the features in 1.0 are
 supported in 1.2.
 
-The number after the second decimal point reflects a patch, which is a change to
-a gem to fix a bug but not introduce new functionality. `1.2.3` means major
-version 1, minor version 2, and a patch version 3.
+Sometimes, a third number will be listed after a decimal point (i.e. `1.8.0`).
+This number reflects a patch, which is a change to a gem to fix a bug but not
+introduce new functionality. `1.8.3` means major version 1, minor version 8, and
+a patch version 3.
 
-The `~>` means any minor version change above the one listed. For some reason lost
-to history, Rubyists have decided to call this `~>` "Twiddle-Wakka." `'~> 2.6'` means
-any minor version above 2.6. 2.7, 2.8, and 2.9 would work (including patches);
-but version 3.0 wouldn't work because it indicates a new major version.
+The `'~> 1.8'` listed after `awesome_print`  means this application should use
+version 1.8 _or the latest minor version_ up to 1.x, **but not 2.0**.
 
-The `mail` gem has a second specification `'>= 2.6.3'`. This means any version
-greater than or equal to `2.6.3`. Because the `mail` gem has two specifications,
-both have to be true, so this gem couldn't use version `2.6` because it's lower
-than `2.6.3`.
+**Note:** Writing `'~> 1.8.0'` will result in different behavior - rather than
+using the last minor version, our application will use the latest _patch_, so
+our application would use version 1.8.0 up to 1.8.x, **but not 1.9.0**!
+
+> **Aside:** For some reason lost to history, Rubyists have decided to call this
+> `~>` "Twiddle-Wakka." `'~> 2.6'` means any minor version above 2.6. 2.7, 2.8,
+> and 2.9 would work (including patches); but version 3.0 wouldn't work because it
+> indicates a new major version.
+
+You can read more about controlling gem versions and additional options in the
+[documentation on RubyGems][]
+
+[documentation on RubyGems]: https://guides.rubygems.org/patterns/
 
 ## Gem Sources
 
-By default, Bundler will try to find gems at the default `source` that you
-specified in the top of your `Gemfile`, `https://rubygems.org`. But sometimes
-you might be working with a gem whose developer(s) haven't yet pushed the code
-to RubyGems.org. Maybe you're one of those developers yourself! In that case,
-Bundler provides a few options.
+At the top of a Gemfile, we include the default source where our gems are
+located (typically `source "https://rubygems.org"`). By default, Bundler will
+try to find gems at the default `source` that you specified in the top of your
+Gemfile. But sometimes you might be working with a gem whose developer(s)
+haven't yet pushed the code to RubyGems.org. Maybe you're one of those
+developers yourself! In that case, Bundler provides a few options.
 
 You can refer to the gem via its GitHub repository:
 
@@ -143,8 +262,8 @@ gem 'rack', git: 'https://github.com/rack/rack'
 ```
 
 Provided that the GitHub repository is for the gem only, this simple invocation
-should work. If the gem code is in a sub-directory of the repository, a number
-of options are available to help you help Bundler find the gem. Consult the Bundler
+should work. If the gem code is in a subdirectory of the repository, several
+options are available to help you help Bundler find the gem. Consult the Bundler
 [documentation][git-bundler] for options.
 
 Or, perhaps the gem is private and needs to be accessed via SSH. No problem.
@@ -153,15 +272,15 @@ Or, perhaps the gem is private and needs to be accessed via SSH. No problem.
 gem 'nokogiri', :git => 'login@example.com:some-user-account/some-private-gem.git'
 ```
 
-### Gemfile
+### Configuring the Gemfile
 
-The Gemfile is a list of gems your app uses. The Gemfile lets you set up groups,
-so gems are only loaded under specific circumstances. For example, you might
-have a gem like Pry in your `development` group because you only need to use Pry
-to debug when you are in the development phase. Your code in `production`, i.e.
-when your app is being used by a user, doesn't need to use the Pry gem.
+The Gemfile lets you set up groups, so gems are only loaded under specific
+circumstances. For example, you might have a gem like Pry in your `development`
+group because you only need to use Pry to debug when you are in the development
+phase. Your code in `production`, i.e. when your app is being used by a user,
+doesn't need to use the Pry gem.
 
-Here's an example Gemfile:
+Here's an example Gemfile with a group specified:
 
 ```ruby
 source "https://rubygems.org"
@@ -208,44 +327,32 @@ environments, we can include them both in an array:
 gem "pry", :groups => [:development, :test]
 ```
 
-#### Define Bundler
+To quickly review, once you've got gems listed in the Gemfile, [Bundler](http://bundler.io/) will handle the process of installing them when other users download
+the application.
 
-Bundler is a way to handle code dependencies. To see why that's a big deal,
-let's try to understand the problem a bit.
+Including `gem` followed by the name of the gem will make sure that gem is
+installed for the project. Listing a gem without a version will cause Bundler to
+download the newest version of that gem.
 
-#### The Problem
+Including a specific version, like  `gem 'sinatra', '1.4.5'` will lock the version
+so your app only uses that version.
 
-Imagine you're writing an amazing app. This app, being built on the shoulders of
-giants (gems), requires OTHER code to work. If it's a web app, maybe you'll be
-using the incredible [Sinatra](http://www.sinatrarb.com/) gem. Need a database?
-Try the [Sequel](https://github.com/jeremyevans/sequel) gem.
+Including `~>` before the version number will limit your app to using either the
+version you list or a version with only minor updates (or patches, depending on your
+syntax).
 
-One way to handle this is to have a note in your README with something like,
-"Hey, install Sinatra and Sequel".
-
-### Enter Bundler
-
-[Bundler](http://bundler.io/) handles all of this for you. It provides you with
-a `Gemfile` where you can keep your requirements in one place. The `Gemfile`
-creates a single place for gems to be required and versions to be specified.
-
-- Need the Sinatra gem for your project? Add `gem 'sinatra'`to your Gemfile.
-- Need the Sinatra gem, but at version 1.4.5? Add `gem 'sinatra', '1.4.5'` to your Gemfile.
-- Need the Sinatra gem at a version higher than 1.4, but less than 1.5? Add `gem 'sinatra', '~> 1.4.0'`
-- Need to use the `sinatra` command that came with that gem you just installed? Run it _via_ Bundler with `bundle exec sinatra`.
-
-[Read more here](http://bundler.io/gemfile.html)
+[Read more about the Gemfile here](http://bundler.io/gemfile.html)
 
 With this, you can make sure everyone working on your app is using the right
-version. Now to get the code working :-)
+version. Now, let's try practicing what we've learned.
 
 ## Code-Along
 
 ### Using Bundler
 
-Getting started with Bundler is super easy. To create a Gemfile, type `bundle
-init` in your terminal. You'll notice we created one for you in the repo so
-running `bundle init` will give you an error.
+To get started with Bundler, we'll first create a Gemfile. To create a Gemfile,
+type `bundle init` in your terminal. You'll notice we created one for you in the
+repo so running `bundle init` will give you an error.
 
 ### Anatomy of Bundler Files
 
@@ -253,12 +360,11 @@ There's only one file Bundler requires you have (Gemfile). The other files are
 conventional for a typical Ruby application, but not required by the use of
 Bundler for gem management.
 
-- Gemfile - This file is required by Bundler and contains a source, and a list of
+- `Gemfile` - This file is required by Bundler and contains a source and a list of
   file requirements. That's all.
-- config/environment.rb - The environment file is where we'll be loading all of our
+- `config/environment.rb` - The environment file is where we'll be loading all of our
   app's dependencies, from gems to database connections.
-
-- bin/run.rb - This file will start our application. This file will require the
+- `bin/run.rb` - This file will start our application. This file will require the
   environment file we created earlier to provide our app with access to our gems.
 
 We'll be using these files in the test suite, so don't rename them.
@@ -273,7 +379,7 @@ gem "rspec"
 gem "sinatra"
 
 group :development do
-gem "pry"
+  gem "pry"
 end
 ```
 
@@ -286,21 +392,23 @@ terminal. This will install the listed gems for you. They won't show up in the
 directory, but they are in your system, and available.
 
 Running `bundle install` also creates a new file: `Gemfile.lock`. This file
-notes which specific version of the gem was installed.
+notes which specific gem versions were installed. If this file is committed and
+included in a project, Bundler will default to using the exact versions listed
+in this file when installing gems.
 
 ### Working with `config/environment.rb`
 
 When you start up an app, your app needs to know the order in which to load
-files. If your app uses gems, a lot of your code will depend on these external
-libraries. This means we'd want the gems to be loaded in our app _before_ our
-own code. If we loaded our code first, we'd get uninitialized constant errors or
-undefined variable or method errors. Load order matters. We can specify load
-information in `config/environment.rb` to configure our load path (or load
-order) so that nothing breaks.
+files. If your app uses gems, your code will depend on these external libraries.
+This means we'd want the gems to be loaded in our app _before_ our own code. If
+we loaded our code first, we'd get uninitialized constant errors or undefined
+variable or method errors. Load order matters. We can specify load information
+in `config/environment.rb` to configure our load path (or load order) so that
+nothing breaks.
 
-Here we specify which Bundler groups we want to load. The following code is used
-to load the `default` group (anything not explicitly in a group, like `test` in
-your Gemfile) and the `development` group.
+In `config/environment.rb`, we can specify which Bundler groups we want to load.
+The following code is used to load the `default` group (anything not explicitly
+in a group) and the `development` group.
 
 **Place the following code in `config/environment.rb`:**
 
@@ -313,15 +421,17 @@ In the example above, we're first requiring `'bundler/setup'`. If we don't do
 this, our app won't know to use bundler to install our gems. Without that line,
 our `Gemfile` becomes pointless.
 
-**Important:** The two arguments that you are passing into the `.require` method _must be
-passed in the correct order, shown above_. The test you are trying to pass is
-testing for order.
+**Important:** The two arguments that you are passing into the `.require` method
+_must be passed in the correct order, shown above_. The test you are trying to
+pass is testing for order.
 
 ### Working with `bin/run.rb`
 
-This is where the action is. This is where our app logic goes, and where we make our millions.
+This is where the action is. This is where our app logic goes, and where we make
+our millions.
 
-To take advantage of all of the work we did in the environment file, let's require it here.
+To take advantage of all of the work we did in the environment file, let's
+require it here.
 
 **Place the following code in `bin/run.rb`:**
 
@@ -331,26 +441,21 @@ require_relative '../config/environment'
 
 That's it! Now we can access all of our gems from our `run.rb` file.
 
-### Using `require` and `require_relative`
+## Conclusion
 
-You will notice that we use two different require methods while setting up our
-environment and bin files.
+With a Gemfile, you can augment your own applications and bring in many gems.
+Some gems, like Rails and Sinatra, are complex enough that they are used to
+build major websites. Some gems are extremely simple and serve a single purpose.
 
-While both of these methods might look similar they do different things. Both
-load a file based on the filename passed in as a parameter and return true if
-the file was found and loaded successfully and they will raise a LoadError if it
-returns false. However...
+The installation of gems from the Gemfile is handled by Bundler. We can actually
+make sure these gems get loaded by using an environment file and Bundler, then
+requiring the environment file in our run file. Whenever the run file is
+executed, Bundler requires the appropriate gems for us or prompts us to run
+`bundle install` if it hasn't been run.
 
-- [require][require] takes an absolute path for the
-  filename, so the file must either be in the directory from which the application
-  is being run or in one of the directories in your shell's PATH variable (which
-  often includes the directory containing the gems you've installed).
-
-- [require_relative][require_relative] takes a relative path that is relative to
-  the file in which the require statement is called (so it's relative to the
-  file being run, not to the directory from which the code is being called).
-  
-  *Top Tip: Use SSH syntax for the AwesomePrint Gem.*
+From here, we can add whatever application logic we'd like - we have a way to
+include gems, a place to configure and load them and a file that starts
+everything!
 
 ## Resources
 
@@ -359,6 +464,4 @@ returns false. However...
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/using-bundler' title='Gems and Bundler'>Gems and Bundler</a> on Learn.co and start learning to code for free.</p>
 
-[require]: http://apidock.com/ruby/Kernel/require
-[require_relative]: http://apidock.com/ruby/Kernel/require_relative
 [git-bundler]: https://bundler.io/guides/git.html
