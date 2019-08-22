@@ -1,7 +1,4 @@
 require_relative '../config/environment'
 
-Hashie
-Sinatra
-Octokit
-Pry
-AwesomePrint
+hash = { :a => 4, :b => 10 }
+ap hash
