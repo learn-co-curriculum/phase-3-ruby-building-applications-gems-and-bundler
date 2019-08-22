@@ -1,5 +1,1 @@
-Hashie
-Sinatra
-Octokit
-Pry
-AwesomePrint
+# require the environment file
