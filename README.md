@@ -383,7 +383,7 @@ group :development do
 end
 ```
 
-**Run your test suite with `rspec` or `learn` to see what gems you'll be adding to
+**Run your test suite with `rspec` or `learn test` to see what gems you'll be adding to
 your gem file. Add the appropriate gems, specifying their version when
 necessary, to get the tests passing**.
 
