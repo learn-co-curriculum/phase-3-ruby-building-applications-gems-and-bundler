@@ -1,4 +1,4 @@
-# Using Bundler Code-Along
+# Gems and Bundler
 
 ## Objectives
 
