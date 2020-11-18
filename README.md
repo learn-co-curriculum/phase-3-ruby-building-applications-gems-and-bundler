@@ -31,8 +31,8 @@ them in your applications.
 
 ### How to Install a Gem
 
-Gems are primarily hosted by [RubyGems][]
-([https://rubygems.org/][]), a free service provided for
+Gems are primarily hosted by [RubyGems (https://rubygems.org)](https://rubygems.org), 
+a free service provided for
 the Ruby community. If you've gone through the manual setup for your local
 environment or are using the in-browser IDE, you should be able to write the
 following in your terminal and type:
