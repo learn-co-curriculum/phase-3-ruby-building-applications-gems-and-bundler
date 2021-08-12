@@ -40,7 +40,7 @@ gem install rspec
 ```
 
 When you run this command, Ruby locates the gem,
-[looking in RubyGems by default][rspec gem], and if found, downloads and
+[looking in RubyGems by default][rspec gem], and if it finds it, downloads and
 installs the latest version to your computer.
 
 [rspec gem]: https://rubygems.org/gems/rspec
