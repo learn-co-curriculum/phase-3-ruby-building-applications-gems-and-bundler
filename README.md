@@ -35,8 +35,8 @@ Gems are primarily hosted by [RubyGems (https://rubygems.org)][ruby gems], a
 free service provided for the Ruby community. You can install gems via the
 terminal:
 
-```bash
-gem install rspec
+```console
+$ gem install rspec
 ```
 
 When you run this command, Ruby locates the gem,
@@ -190,8 +190,8 @@ while in a Ruby application directory. Bundler will install any gems listed.
 Bundler _itself_ is a Ruby gem, which should already be installed on your
 system. You can make sure you have the latest version by running:
 
-```sh
-gem install bundler
+```console
+$ gem install bundler
 ```
 
 [bundler]: https://bundler.io/
