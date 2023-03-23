@@ -338,7 +338,7 @@ version. Now, let's try practicing what we've learned.
 To get started with Bundler, we'll first create a Gemfile. To create a Gemfile,
 make sure you're in the lab directory, and type `bundle init` in your terminal.
 
-There's only one file Bundler requires you have (Gemfile). The other files are
+There's only one file Bundler requires you to have (Gemfile). The other files are
 conventional for a typical Ruby application, but not required by the use of
 Bundler for gem management.
 
