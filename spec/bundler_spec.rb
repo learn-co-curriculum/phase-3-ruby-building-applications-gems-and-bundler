@@ -4,7 +4,8 @@ describe "Bundler" do
     let(:gemfile_text) { File.read('Gemfile') }
     let(:bundle_output) do
       Bundler.with_unbundled_env do
-        `bundle`
+        # Use bundle list to show installed gems instead of reinstalling
+        `bundle list 2>&1`
       end
     end
 
@@ -49,7 +50,7 @@ describe "Bundler" do
 
         bundle_output_without_development = ""
         Bundler.with_unbundled_env do
-          bundle_output_without_development = `bundle config set --local without development`
+          bundle_output_without_development = `bundle config set --local without development && bundle list 2>&1`
         end
         expect(bundle_output_without_development =~ /pry/).to eq(nil)
       end
@@ -61,7 +62,7 @@ describe "Bundler" do
 
         bundle_output_without_test = ""
         Bundler.with_unbundled_env do
-          bundle_output_without_test = `bundle config set --local without test`
+          bundle_output_without_test = `bundle config set --local without test && bundle list 2>&1`
         end
         expect(bundle_output_without_test =~ /rspec/).to eq(nil)
       end
@@ -72,7 +73,7 @@ describe "Bundler" do
   describe "bundle install" do
     describe "Gemfile.lock" do
       it "exists after running `bundle install`" do
-        expect(File.exists?('Gemfile.lock')).to eq(true)
+        expect(File.exist?('Gemfile.lock')).to eq(true)
       end
     end
   end
